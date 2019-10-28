@@ -1,0 +1,56 @@
+.all
+  .header-registration
+    .header-registration__contents
+      .merucari-icon
+        = link_to(root_path, class:"logo-link") do
+          = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'logo-link__image'
+      .registration-bar.sms-bar.address-bar.card-bar
+        = render 'layouts/progressbar'
+
+  .registry-box
+    .registry-box__title
+      支払い方法
+    .registry-box__content
+      .registry-box__content__box
+        .content__credit-card
+          .content__credit-card__inner
+            = form_with url: cards_path, method: :post, html: { name: "inputForm" } do |f|
+              .field
+                .string
+                  = f.label :カード番号, class: "text"
+                  .required
+                    必須
+                = f.text_field :card_number, autofocus: true, autocomplete: "nickname", class: "textfield", placeholder: "半角数字のみ",maxlength: "16"
+                .card-mark
+                  = image_tag asset_path('visa.png'), height: '25', width: '42'
+                  = image_tag asset_path('mastercard.png'), height: '25', width: '42'
+                  = image_tag asset_path('saisoncard.png'), height: '25', width: '42'
+                  = image_tag asset_path('jcbcard.png'), height: '25', width: '42'
+                  = image_tag asset_path('americanexpress.png'), height: '25', width: '42'
+                  = image_tag asset_path('dinersclub.png'), height: '25', width: '45'
+                  = image_tag asset_path('discover.png'), height: '25', width: '42'
+
+              .field
+                .string
+                  = f.label :有効期限, class: 'text'
+                  .required
+                    必須
+                .cards-expire__wrap
+                  = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire'
+                  %span.expire-text 月
+                  %br
+                .cards-expire__wrap
+                  = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-expire2'
+                  %span.expire-text 年
+              .field
+                .string
+                  = f.label :セキュリティコード, class: 'text'
+                  .required
+                    必須
+                = f.text_field :cvc, type: 'text', class: 'textfield', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+              %p.link
+                = link_to(root_path, class: "confirmation-identification", id: "telconfim") do
+                  = fa_icon 'question-circle', class:"icon__question"
+                  カード裏面の番号とは？
+              #card_token
+                = f.submit '追加する', class: 'next', id: 'token_submit'
