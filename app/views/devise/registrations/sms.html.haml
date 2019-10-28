@@ -1,0 +1,28 @@
+.all
+  .header-registration
+    .header-registration__contents
+      .merucari-icon
+        = link_to(root_path, class:"logo-link") do
+          = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'logo-link__image'
+      .registration-bar.sms-bar
+        = render 'layouts/progressbar'
+
+  .registry-box
+    .registry-box__title
+      電話番号認証
+    .registry-box__content
+      .registry-box__content__box
+        .field
+          .string
+            %label{class: "text"}
+              携帯電話の番号
+          %input{ type: "text", name: "name", placeholder: "携帯電話の番号を入力", class: "textfield" }
+        .identification__text
+          本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        = link_to(smsConfirmation_users_path, class: "next") do
+          SMSを送信する
+        .identification__text#margintext
+          ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        %p.link
+          = link_to(root_path, class: "confirmation-identification", id: "telconfim") do
+            電話番号の認証が必要な理由＞

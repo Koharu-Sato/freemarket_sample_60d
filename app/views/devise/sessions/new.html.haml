@@ -1,0 +1,30 @@
+.all
+  = render partial: "layouts/simpleheader"
+
+  .registry-box.login__box
+    .registry-box__title
+      .registry-box__title__text
+        アカウントをお持ちでない方はこちら
+      .registry-box__title__link
+        = link_to(new_user_path, class: "new-link") do
+          新規会員登録
+    .registry-box__content
+      .registry-box__content__box
+        = link_to(user_facebook_omniauth_authorize_path, class: 'registry-box__content__box__facebook') do
+          = fa_icon 'facebook-square', class:"icon__facebook"
+          Facebookでログイン
+        = link_to(user_google_oauth2_omniauth_authorize_path, class: 'registry-box__content__box__google') do
+          = image_tag asset_path('google.png'), height: '25', width: '25', class: 'icon__google'
+          Googleでログイン
+        %br/
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field.loginwidth
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "textfield", placeholder: "メールアドレス"
+          .field.loginwidth
+            = f.password_field :password, autocomplete: "new-password", class: "textfield", placeholder: "パスワード"
+          .registry-box__content__box__robot.session__robot
+            ここに「私はロボットではねえ」を記述
+          = f.submit "ログイン", class: "next"
+        %p.forgot
+          = link_to(new_password_path(resource_name),class: "forgot-link") do
+            パスワードをお忘れの方

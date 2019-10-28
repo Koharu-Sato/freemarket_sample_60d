@@ -1,0 +1,89 @@
+.all
+  .header-registration
+    .header-registration__contents
+      .merucari-icon
+        = link_to(root_path, class:"logo-link") do
+          = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'logo-link__image'
+      .registration-bar
+        = render 'layouts/progressbar'
+
+  .registry-box
+    .registry-box__title
+      会員情報入力
+    .registry-box__content
+      .registry-box__content__box
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+
+          .field
+            .string
+              = f.label :nickname, "ニックネーム", class: "text"
+              .required
+                必須
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "textfield", placeholder: "例）エキスパ太郎"
+          .field
+            .string
+              = f.label :email, "メールアドレス", class: "text"
+              .required
+                必須
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "textfield", placeholder: "PC・携帯どちらでも可"
+          -if @credential.present?
+            = f.hidden_field :password, {value: @user.password}
+            = f.hidden_field :password_confirmation, {value: @user.password_confirmation}
+            = f.fields_for :sns_credentials do |s|
+              = s.hidden_field :uid, {value: @credential.uid}
+              = s.hidden_field :provider, {value: @credential.provider}
+          -else
+            .field
+              .string
+                = f.label :password, "パスワード", class: "text"
+                .required
+                  必須
+              = f.password_field :password, autocomplete: "new-password", class: "textfield", placeholder: "7文字以上"
+            .field
+              .string
+                = f.label :password_confirmation, "パスワード(確認)", class: "text"
+                .required
+                  必須
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "textfield", placeholder: "7文字以上"
+          .identification
+            .identification__title
+              本人確認
+            .identification__text
+              安心、安全にご利用いただくために、お客様の本人確認情報の登録にご協力ください。他のお客様に公開されることはありません。
+          .field
+            .string
+              = f.label :family_first_name, "お名前", class: "text"
+              .required
+                必須
+            .textfi
+              = f.text_field :family_name, autofocus: true, autocomplete: "family_name", class: "textfield", id: "half", placeholder: "例）山田"
+              = f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "textfield", id: "half", placeholder: "例）進太郎"          
+          .field
+            .string
+              = f.label :family_first_name__kana, "お名前カナ(全角)", class: "text"
+              .required
+                必須
+            .textfi
+              = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", class: "textfield",id: "half", placeholder: "例）ヤマダ"
+              = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "textfield",id: "half", placeholder: "例）シンタロウ"
+          .field
+            .string
+              = f.label :birth_date, "生年月日", class: "text"
+              .required
+                必須
+          .date-boxes
+            = raw sprintf(f.date_select(:birth_date, prompt: "--", use_month_numbers: true,start_year: (Time.now.year - 1000), end_year: Time.now.year, date_separator: '%s'), "年", "月") + "日"
+          .attenton-identification
+            ※本人確認は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          -# .robot
+          -#   ここにロボットだ。
+          .TermsOfService
+            「次へ進む」のボタンを押すことにより、
+            = link_to(root_path, class: "link-term") do
+              利用規約
+            に同意したものとみなします。
+          = f.submit "次へ進む", class: "next"
+          %p.link
+            = link_to(root_path, class: "confirmation-identification") do
+              本人確認の登録について＞
