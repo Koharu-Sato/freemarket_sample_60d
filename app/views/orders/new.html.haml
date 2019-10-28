@@ -1,0 +1,68 @@
+- if flash[:notice]
+  .flash
+    = flash[:notice]
+.cover
+  = render partial: "layouts/simpleheader"
+  .oreder-new
+    .oreder-new__body
+      .oreder-new__body__header 購入内容の確認
+      .oreder-new__body__main
+        .oreder-new__body__main__inner
+          - if Rails.env.development?
+            = image_tag "/uploads/image/image/#{@image.id}/"+@image[:image], height: "85.19", class:"oreder-new__body__main__inner__image"
+          - if Rails.env.production?
+            = image_tag @image.image.url, class:"oreder-new__body__main__inner__image"
+          .oreder-new__body__main__inner__item-name #{@item.name}
+          .oreder-new__body__main__inner__form
+            .oreder-new__body__main__inner__form__price-box
+              .oreder-new__body__main__inner__form__price-box__price
+                = number_to_currency("#{@item.price}", unit: "¥", precision: 0)
+              .oreder-new__body__main__inner__form__price-box__fee 送料込み
+            .oreder-new__body__main__inner__form__point-box
+              .oreder-new__body__main__inner__form__point-box__point ポイントはありません
+            .oreder-new__body__main__inner__form__price-table
+              .oreder-new__body__main__inner__form__price-table__text 支払い金額
+              .oreder-new__body__main__inner__form__price-table__pay-price
+                = number_to_currency("#{@item.price}", unit: "¥", precision: 0)
+            = form_with url: pay_orders_path, method: :post, local: true do |f|
+              = f.fields_for @order do |i|
+                = i.hidden_field :name, value: @item.name
+                = i.hidden_field :detail, value: @item.detail
+                = i.hidden_field :state, value: @item.state
+                = i.hidden_field :delivery_fee, value: @item.delivery_fee
+                = i.hidden_field :price, value: @item.price
+                = i.hidden_field :delivery_method, value: @item.delivery_method
+                = i.hidden_field :delivery_date, value: @item.delivery_date
+                = i.hidden_field :buyer_id, value: @item.buyer_id
+                = i.hidden_field :saler_id, value: @item.saler_id
+                = i.hidden_field :item_id, value: @item.id
+                %input{type: "hidden", name: "item", value: @item.id}
+                = f.submit '購入する', class: 'oreder-new__body__main__inner__form__pay-btn'
+        .oreder-new__body__address-box
+          .oreder-new__body__address-box__inner
+            %h3.oreder-new__body__address-box__inner__title 配送先
+            .oreder-new__body__address-box__inner__address
+              〒#{current_user.addresses[0].postal_code}
+              %br
+              #{current_user.addresses[0].prefecture.name}
+              #{current_user.addresses[0].city}
+              %br
+              #{current_user.nickname}
+            .oreder-new__body__address-box__inner__edit
+              変更する
+              = fa_icon 'chevron-right'
+        .oreder-new__body__payment-box
+          .oreder-new__body__payment-box__inner
+            %h3.oreder-new__body__payment-box__inner__title 支払い方法
+            .oreder-new__body__payment-box__inner__card
+              = "**** **** **** " + @card_information.last4
+              %br
+              - exp_month = @card_information.exp_month.to_s
+              - exp_year = @card_information.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+              %br
+            = image_tag "#{@card_src}", width: '26', height: '20', alt: @card_brand, class: "oreder-new__body__payment-box__inner__image"
+            .oreder-new__body__payment-box__inner__edit
+              変更する
+              = fa_icon 'chevron-right'
+  = render partial: "layouts/simplefooter"
