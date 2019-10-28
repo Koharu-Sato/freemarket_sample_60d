@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample60d
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"}
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    -# = form_with url: purchase_item_path do
+    -#   :plain
+    -#     %script{type: "text/javascript" src: "https://checkout.pay.jp" class: "payjp-button" data-key: ""}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = yield

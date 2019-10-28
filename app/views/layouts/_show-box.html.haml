@@ -1,0 +1,100 @@
+.show-box__head
+  .show-box__head__name
+    = link_to("#{@item.name}", root_path)
+  .show-box__head__text
+    『#{@item.name}』は、#{@order_count}回の取引実績を持つ
+    = link_to("#{@saler.nickname}", root_path)
+    さんから出品されました。
+    = link_to("#{@item.brand}", root_path)
+    (
+    = link_to("#{@category.category}", root_path)
+    )の商品で、#{@item.prefecture.name}から~#{@item.delivery_date}日で発送されます。
+.show-box__main
+  .show-box__main__image-box
+    .show-box__main__image-box__main-image#slider_main
+      %ul
+        - @image.each do |img|
+          - if img.image?
+            %li
+              - if Rails.env.development?
+                = image_tag "/uploads/image/image/#{img.id}/"+img[:image], size:'300x300'
+              - if Rails.env.production?
+                = image_tag img.image.url, size:'300x300'
+      - if @item.buyer_id.present?
+        .show-box__main__image-box__main-image__sold-text SOLD
+        .show-box__main__image-box__main-image__soldout
+    .show-box__main__image-box__sub-image#slider_thumb
+      %ul
+        - @image.each do |img|
+          - if img.image?
+            %li
+              - if Rails.env.development?
+                = image_tag "/uploads/image/image/#{img.id}/"+img[:image], size:'60x60'
+              - if Rails.env.production?
+                = image_tag img.image.url, size:'60x60'
+  %table.show-box__main__detail-box
+    %tr
+      %td.th1 出品者
+      %td.th2
+        = link_to("#{@saler.nickname}", root_path)
+        .show-box__main__detail-box__icon-box
+          .show-box__main__detail-box__icon-box__icons
+            = fa_icon 'laugh', class: "good"
+            %span 2
+          .show-box__main__detail-box__icon-box__icons
+            = fa_icon 'meh', class: "normal"
+            %span 1
+          .show-box__main__detail-box__icon-box__icons
+            = fa_icon 'frown-open', class: "bad"
+            %span 2
+    %tr
+      %td.th1 カテゴリー
+      %td.th2
+        - unless @category.parent.parent.nil?
+          = link_to("#{@category.parent.parent.category}", category_path(@category.parent.parent.id))
+          %br
+          = link_to category_path(@category.parent.id) do
+            = fa_icon 'chevron-right'
+            = "#{@category.parent.category}"
+          %br
+          = link_to category_path(@category.id) do
+            = fa_icon 'chevron-right'
+            = "#{@category.category}"
+        - else
+          = link_to("#{@category.parent.category}", category_path(@category.parent.id))
+          %br
+          = link_to category_path(@category.id) do
+            = fa_icon 'chevron-right'
+            = "#{@category.category}"
+    %tr
+      %td.th1 ブランド
+      %td.th2
+        = link_to("#{@item.brand}", root_path)
+    %tr
+      %td.th1 商品の状態
+      %td.th2 #{@item.state}
+    %tr
+      %td.th1 配送料の負担
+      %td.th2 #{@item.delivery_fee}
+    %tr
+      %td.th1 配送の方法
+      %td.th2 #{@item.delivery_method}
+    %tr
+      %td.th1 発送元地域
+      %td.th2 
+        = link_to("#{@item.prefecture.name}", root_path)
+    %tr
+      %td.th1 発送日の目安
+      %td.th2 #{@item.delivery_date}日で発送
+.show-box__item-price-box
+  %span.show-box__item-price-box__price 
+    = number_to_currency("#{@item.price}", unit: "¥", precision: 0)
+  %span.show-box__item-price-box__tax (税込)
+  %span.show-box__item-price-box__fee 送料込み
+- unless current_page?(controller: "items", action: "pre_edit")
+  - if @item.buyer_id.present?
+    = link_to("売り切れました", root_path, class: "show-box__btn__soldout")
+  - else
+    = link_to("購入画面に進む", new_order_path(@item), class: "show-box__btn")
+.show-box__comment
+  %p #{@item.detail}

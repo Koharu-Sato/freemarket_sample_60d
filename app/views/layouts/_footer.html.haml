@@ -1,0 +1,73 @@
+.footer
+  %nav.footer__box
+    .footer__box__about
+      %h2 メルカリについて
+      %ul.footer__box__about__lists
+        %li.footer__box__about__lists.list
+          = link_to("会社概要（運営会社）", root_path, class:"list-color")
+        %li.footer__box__about__lists.list
+          = link_to("採用情報", root_path, class:"list-color")
+        %li.footer__box__about__lists.list
+          = link_to("プレスリリース", root_path, class:"list-color")
+        %li.footer__box__about__lists.list
+          = link_to("公式ブログ", root_path, class:"list-color")
+        %li.footer__box__about__lists.list
+          = link_to("メルカリロゴ利用ガイドライン", root_path, class:"list-color")
+        = link_to("https://twitter.com/mercari_jp", class:'icon-link') do
+          = fa_icon 'twitter', class:"icon-link__twitter"
+        = link_to("https://www.facebook.com/mercarijp", class:'icon-link') do
+          = fa_icon 'facebook-square', class:"icon-link__facebook"
+    .footer__box__help
+      %h2 ヘルプ＆ガイド
+      %ul.footer__box__help__lists
+        %li.footer__box__help__lists.list
+          = link_to("メルカリガイド", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("らくらくメルカリ便", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("ゆうゆうメルカリ便", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("大型メルカリ便", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("車体取引ガイド", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("メルカリあんしん・あんぜん宣言", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("傷ブランド品撲滅の取り組み", root_path, class:"list-color")
+        %li.footer__box__help__lists.list
+          = link_to("メルカリボックス", root_path, class:"list-color")
+    .footer__box__terms
+      %h2 プライバシーと利用規約
+      .footer__box__terms__flex
+        .footer__box__terms__flex__left
+          %ul.footer__box__terms__lists
+            %li.footer__box__terms__lists.list
+              = link_to("プライバシーポリシー", root_path, class:"list-color")
+            %li.footer__box__terms__lists.list
+              = link_to("メルカリ利用規約", root_path, class:"list-color")
+            %li.footer__box__terms__lists.list
+              = link_to("あんしんスマートサポート制度に関する利用特約", root_path, class:"list-color")
+            %li.footer__box__terms__lists.list
+              = link_to("コンプライアンスポリシー", root_path, class:"list-color")
+        .footer__box__terms__flex__right
+          %ul.footer__box__terms__lists
+            %li.footer__box__terms__lists.list
+              = link_to("個人データの安全管理に係る基本方針", root_path, class:"list-color")
+            %li.footer__box__terms__lists.list
+              = link_to("特定商取引法に関する表記", root_path, class:"list-color")
+            %li.footer__box__terms__lists.list
+              = link_to("資金決済法に基づく表示", root_path, class:"list-color")
+            %li.footer__box__terms__lists.list
+              = link_to("法令順守犯罪抑止のために", root_path, class:"list-color")
+    .footer__box__country
+      %h2 国
+      %ul.footer__box__country__lists
+        %li.footer__box__country__lists.list
+          = link_to("日本", root_path, class:"list-color")
+        %li.footer__box__country__lists.list
+          = link_to("United States", root_path, class:"list-color")
+  .footer__references
+    = link_to(root_path, class:"footer__references__logo") do
+      %img{src:"https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", class:"footer__references__logo__image"}
+    .footer__references__copy
+      %span{style:"font-size:12px", class:"footer__references__copy-wright"} © 2019 Mercari
