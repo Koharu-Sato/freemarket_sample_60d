@@ -1,0 +1,24 @@
+.exhibit-button {
+  height: 160px;
+  width: 160px;
+  border-radius: 80px;
+  background-color: rgb(234,53,45);
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  text-align: center;
+  color: rgb(255,255,255);
+  &__text {
+    height: 22px;
+    font-size: 22px;
+    line-height: 22px;
+    padding-top: 32px;
+  }
+  &__font {
+    height: 54px;
+    width: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 56px;
+  }
+}
