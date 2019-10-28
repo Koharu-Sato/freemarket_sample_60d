@@ -1,0 +1,56 @@
+-# コメントアイコンを表示させるために導入
+%script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/8da05e3b5a.js"}
+
+.show-japan
+  = render partial: "layouts/header"
+  - breadcrumb :myitem
+  = render partial: 'layouts/navbar'
+  .show
+    = render partial: "side_bar"
+    .right
+      .right__myitem-profile
+        .right__myitem-profile__title
+          出品した商品
+        .right__myitem-profile__lower
+          .right__myitem-profile__lower__tab
+            .right__myitem-profile__lower__tab__news
+              出品中
+            .right__myitem-profile__lower__tab__lists
+              取引中
+            .right__myitem-profile__lower__tab__lists
+              売却済み
+          - if @salers_item.present?
+            - @salers_item.each do |item|
+              = link_to pre_edit_item_path(item.id), class: "right__myitem-profile__lower__li" do
+                .right__myitem-profile__lower__li__icon
+                  - if Rails.env.development?
+                    = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], size:'48x48'
+                  - if Rails.env.production?
+                    = image_tag item.images[0].image.url, size:'48x48'
+                .right__myitem-profile__lower__li__center
+                  .right__myitem-profile__lower__li__center__text
+                    #{item.name}
+                  .right__myitem-profile__lower__li__center__time
+                    .right__myitem-profile__lower__li__center__time__count
+                      = fa_icon 'heart-o'
+                      - if item.favorites_count.nil?
+                        0
+                      - else
+                        #{item.favorites_count}
+                    .right__myitem-profile__lower__li__center__time__count
+                      %i.far.fa-comment-alt
+                      0
+                .right__myitem-profile__lower__li__chevron
+                  = fa_icon 'chevron-right'
+          - else
+            .right__myitem-profile__lower__no-item
+              %img{src:"https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308"}
+              .right__myitem-profile__lower__no-item__text 出品中の商品がありません
+      .right__arrow
+        = link_to root_path, class: "right__arrow__left" do
+          = fa_icon 'chevron-left'
+        = link_to root_path, class: "right__arrow__right" do
+          = fa_icon 'chevron-right'
+= render partial: 'layouts/button' 
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'

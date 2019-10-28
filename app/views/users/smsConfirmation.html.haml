@@ -1,0 +1,50 @@
+.all
+  .header-registration
+    .header-registration__contents
+      .merucari-icon
+        = link_to(root_path, class:"logo-link") do
+          = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'logo-link__image'
+      .registration-bar.sms-bar
+        = render 'layouts/progressbar'
+
+  .registry-box
+    .registry-box__title
+      電話番号認証
+    .registry-box__content
+      .registry-box__content__box
+        .field
+          .string
+            %label{class: "text"}
+              認証番号
+          %input{class: "textfield", placeholder: "認証番号を入力"}
+        .identification__text
+          SMSで届いた認証番号を入力してください
+        = link_to(new_address_path, class: "next") do
+          認証して完了
+
+  .registry-box.spacebox
+    .registry-box__content
+      .registry-box__content__box
+        .field
+          .string
+            .text
+              30秒たっても認証番号が届かない方へ
+          .identification__text
+            電話で認証番号を聞くこともできます。
+        = link_to(root_path, class: "next") do
+          電話で認証番号を聞く(通話無料)
+  .registry-box.spacebox
+    .registry-box__content
+      .registry-box__content__box
+        .field
+          .string
+            .text
+              認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+        %p.link-tel
+          = link_to(users_sms_path, class: "confirmation-identification", id: "telconfim") do
+            電話番号を再度入力する
+        .identification__text
+          ※SMSが届かない場合は
+          = link_to(root_path, class: "link-term") do
+            SMS受信設定
+          を確認して、もう一度電話番号を入力してください。

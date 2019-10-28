@@ -1,0 +1,17 @@
+.all
+  = render partial: "layouts/simpleheader"
+
+  .registry-box
+    .registry-box__title
+      新規会員登録
+    .registry-box__content
+      .registry-box__content__box
+        = link_to(new_user_registration_path, class: 'registry-box__content__box__mail') do
+          = fa_icon 'envelope-o', class:"icon__mail"
+          メールアドレスで登録する
+        = link_to(user_facebook_omniauth_authorize_path, class: 'registry-box__content__box__facebook', method: :get) do
+          = fa_icon 'facebook-square', class:"icon__facebook"
+          Facebookで登録する
+        = link_to(user_google_oauth2_omniauth_authorize_path, class: 'registry-box__content__box__google', method: :get) do
+          = image_tag asset_path('google.png'), height: '25', width: '25', class: 'icon__google'
+          Googleで登録する

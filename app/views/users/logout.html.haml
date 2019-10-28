@@ -1,0 +1,14 @@
+.show-japan 
+  = render partial: "layouts/header"
+  - breadcrumb :logout
+  = render partial: 'layouts/navbar'
+  .show
+    = render partial: "side_bar"
+    .right
+      .right__logout
+        = link_to(destroy_user_session_path, method: :delete) do
+          .right__logout__button
+            ログアウト
+  = render partial: "layouts/button"
+  = render partial: "layouts/aside"
+  = render partial: "layouts/footer"

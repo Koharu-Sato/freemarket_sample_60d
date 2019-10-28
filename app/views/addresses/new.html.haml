@@ -1,0 +1,58 @@
+.all
+  .header-registration
+    .header-registration__contents
+      .merucari-icon
+        = link_to(root_path, class:"logo-link") do
+          = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'logo-link__image'
+      .registration-bar.sms-bar.address-bar
+        = render 'layouts/progressbar'
+
+  .registry-box
+    .registry-box__title
+      住所入力
+    .registry-box__content
+      .registry-box__content__box
+        = form_for @address do |f|
+          - if @address.errors.any?
+            .error
+              = "#{@address.errors.count}件のエラーが発生しました"
+
+          .field
+            .string
+              = f.label :postal_code, "郵便番号", class: "text"
+              .required
+                必須
+            = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "textfield", placeholder: "例）123-4567"
+          .field
+            .string
+              = f.label :prefecture_id, "都道府県", class: "text"
+              .required
+                必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, id:"address_prefecture_id"
+          .field
+            .string
+              = f.label :city, "市町区村", class: "text"
+              .required
+                必須
+            = f.text_field :city, autofocus: true, autocomplete: "city", class: "textfield", placeholder: "例）横浜市緑区"
+          .field
+            .string
+              = f.label :block, "番地", class: "text"
+              .required
+                必須
+            = f.text_field :block, autofocus: true, autocomplete: "block", class: "textfield", placeholder: "例）青山1-1-1"
+          .field
+            .string
+              = f.label :building, "建物名", class: "text"
+              .non-required
+                任意
+            = f.text_field :building, autofocus: true, autocomplete: "building", class: "textfield", placeholder: "例）柳ビル103"
+          .field
+            .string
+              = f.label :tel, "電話番号", class: "text"
+              .non-required
+                任意
+            = f.text_field :tel, autofocus: true, autocomplete: "tel", class: "textfield", placeholder: "例）09012345678"
+          = f.submit "次へ進む", class: "next"
+
+

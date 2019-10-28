@@ -1,0 +1,87 @@
+.credit-japan
+  = render partial: "layouts/header"
+  .credit-wrapper
+    = render partial: "users/side_bar"
+    .credit2
+      %h2.credit2__header
+        クレジットカード情報入力
+      .credit2__content2
+        .credit2__content2__box
+          = form_with url: cards_path, method: :post, html: { name: "inputForm" } do |f|
+            .credit2__content2__box__group1
+              = f.label :カード番号, id: "title"
+              %span#mark
+                必須
+              = f.text_field :card_number, autofocus: true, autocomplete: "nickname", class: "credit2__content2__box__group1__submit", placeholder: "半角数字のみ",maxlength: "16"
+              %ul.credit2__content2__box__group1__list
+                %li.credit2__content2__box__group1__list__sub
+                  %img.credit2__content2__box__group1__list__sub__image{src: "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2296184308", width: "49", height: "20"}
+                %li.credit2__content2__box__group1__list__sub
+                  %img.credit2__content2__box__group1__list__sub__image{src: "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2296184308", width: "49", height: "20"}
+            .credit2__content2__box__group2
+              = f.label :有効期限, id: 'title'
+              %span#mark
+                必須
+              %br
+              .credit2__content2__box__group2__bath
+                .credit2__content2__box__group2__bath__month
+                  = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'credit2__content2__box__group2__bath__month__select'
+                  %i.fa.fa-chevron-down
+                  %span
+                    月
+                .credit2__content2__box__group2__bath__year
+                  = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'credit2__content2__box__group2__bath__year__select'
+                  %i.fa.fa-chevron-down
+                  %span
+                    年
+            .credit2__content2__box__group3
+              = f.label :セキュリティコード, id: 'title'
+              %span#mark
+                必須
+              = f.text_field :cvc, type: 'text', class: 'credit2__content2__box__group3__submit', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+              .credit2__content2__box__group3__box
+                .credit2__content2__box__group3__box__sub
+                  %span#question
+                    ?
+                  カード裏面の番号とは？
+            .credit2__content2__box__group4#card_token
+              = f.submit '追加する', class: 'credit2__content2__box__group4__button', id: 'token_submit2'
+= render partial: 'layouts/button' 
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'
+
+-# :javascript
+-#   document.addEventListener(
+-#   "DOMContentLoaded", (e) => {
+-#     Payjp.setPublicKey("pk_test_051cb92c91fa25532f6d5eef");
+-#     const btn = document.getElementById('token_submit'); //IDがtoken_submitの場合に取得されます
+-#     btn.addEventListener("click", (e) => { //ボタンが押されたときに作動します
+-#       alert("登録が完了しました"); //確認用
+-#       e.preventDefault(); //ボタンを一旦無効化します
+
+-#       //カード情報生成
+-#       const card = {
+-#         number: document.getElementById("card_number").value,
+-#         cvc: document.getElementById("cvc").value,
+-#         exp_month: document.getElementById("exp_month").value,
+-#         exp_year: document.getElementById("exp_year").value
+-#       }; //入力されたデータを取得します。
+
+-#       //トークン生成
+-#       Payjp.createToken(card, (status, response) => {
+-#         if (status === 200) { //成功した場合
+-#           $("#card_number").removeAttr("name");
+-#           $("#cvc").removeAttr("name");
+-#           $("#exp_month").removeAttr("name");
+-#           $("#exp_year").removeAttr("name"); //カード情報を自分のサーバにpostせず削除しま
+-#           $("#card_token").append(
+-#             $('<input type="hidden" name="payjp-token">').val(response.id)
+-#           ); //トークンを送信できるように隠しタグを生成
+-#           console.log(response.id);
+-#           document.inputForm.submit();
+-#         } else {
+-#           alert("カード情報が正しくありません。"); //確認用
+-#         }
+-#       });
+-#     });
+-#   },false);

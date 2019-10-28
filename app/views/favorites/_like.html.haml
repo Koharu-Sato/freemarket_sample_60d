@@ -1,0 +1,14 @@
+.like-link{:id => "like-link-#{@item.id}"}
+  - if user_signed_in?
+    - if current_user.favorites.find_by(item_id: @item.id)
+      = link_to unlike_path(item.id), method: :delete, remote: true do
+        .iine__button{style: 'color: red;'}
+          ♥ いいね！#{item.favorites.count}
+    - else
+      = link_to like_path(item.id), method: :post, remote: true do
+        .iine__button
+          ♡ いいね！#{item.favorites.count}
+  - else
+    = link_to user_session_path do
+      .iine__button
+        ♡ いいね！#{item.favorites.count}

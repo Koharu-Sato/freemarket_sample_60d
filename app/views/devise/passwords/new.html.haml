@@ -1,0 +1,29 @@
+.all
+  = render partial: "layouts/simpleheader"
+
+  .registry-box
+    .registry-box__title
+      パスワードをお忘れの方
+    .registry-box__content
+      .registry-box__content__box
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .field
+            .string
+              = f.label :email, "メールアドレス", class: "text"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "textfield", placeholder: "ご登録されたメールアドレス"
+          .attenton-password
+            ご登録されたメールアドレスにパスワード再設定のご案内が送信されます。
+          -# .robot
+          -#   .robot__main
+          -#     .robot__main__check
+          -#     .robot__main__text
+          -#       私はロボットではありません
+          -#     .robot__main__mark
+          -#   .robot__term
+          -#     = link_to('https://policies.google.com/privacy?hl=ja') do
+          -#       プライバシー
+          -#     = link_to('https://policies.google.com/terms?hl=ja') do
+          -#       利用規約
+          .actions
+            = f.submit "送信する", class: "next"

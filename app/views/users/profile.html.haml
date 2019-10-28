@@ -1,0 +1,20 @@
+.show-japan
+  = render partial: "layouts/header"
+  - breadcrumb :profile
+  = render partial: 'layouts/navbar'
+  .show
+    = render partial: "side_bar"
+    .right
+      .right__edit
+        .right__edit__title
+          プロフィール
+        .right__edit__header
+          .right__edit__header__icon
+          %textarea.right__edit__header__name{placeholder: "#{current_user.nickname}"}
+        .right__edit__comment
+          %textarea.right__edit__comment__textarea{placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+          .right__edit__comment__submit
+            変更する
+  = render partial: 'layouts/button' 
+  = render partial: 'layouts/aside'
+  = render partial: 'layouts/footer'
