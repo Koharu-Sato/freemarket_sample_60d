@@ -1,6 +1,6 @@
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
-require 'carrierwave/storage/fog'
+# require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
   if Rails.env.development? || Rails.env.test?
@@ -16,5 +16,5 @@ CarrierWave.configure do |config|
   # }
   end
   config.fog_directory  = 'free1209'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/free1209'
+  # config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/free1209'
 end
