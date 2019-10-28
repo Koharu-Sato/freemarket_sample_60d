@@ -1,0 +1,142 @@
+-# 顔文字を表示させるために導入
+%script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/8da05e3b5a.js"}
+
+= render partial: "layouts/header"
+.show-wrapper
+  .show-box
+    = render partial: "layouts/show-box"
+    .show-box__action-box
+      .show-box__action-box__left
+        = render partial: 'favorites/favorite'
+      .show-box__action-box__center
+        = link_to root_path do
+          = fa_icon 'flag-o'
+          %span 不適切な商品の報告
+      .show-box__action-box__right
+        = link_to root_path do
+          = fa_icon 'lock'
+          あんしん・あんぜんへの取り組み
+  .message-box
+    %ul.message-box__message-list
+      %li.message-box__message-list__list
+        = link_to(root_path, class: "message-box__message-list__list__link") do
+          .message-box__message-list__list__link__user
+            .message-box__message-list__list__link__user__image-box
+              = image_tag src="https://static.mercdn.net/thumb/photos/m67395797689_1.jpg?1570195723", class:"message-box__message-list__list__link__user__image-box__image"
+            %figcaption.message-box__message-list__list__link__user__name 山田
+        .message-box__message-list__list__detail
+          .message-box__message-list__list__detail__message-body
+            .message-box__message-list__list__detail__message-body__text こんばんは 購入希望です
+            .message-box__message-list__list__detail__message-body__icons
+              .message-box__message-list__list__detail__message-body__icons__left
+                = fa_icon 'clock-o'
+                %span.message-box__message-list__list__detail__message-body__icons__left__favorite
+                  3日前
+              .message-box__message-list__list__detail__message-body__icons__right
+                .message-box__message-list__list__detail__message-body__icons__right__form
+                = link_to root_path do
+                  = fa_icon 'flag-o'
+            .message-box__message-list__list__detail__message-body__balloon
+      %li.message-box__message-list__list
+        = link_to(root_path, class: "message-box__message-list__list__link") do
+          .message-box__message-list__list__link__user
+            .message-box__message-list__list__link__user__image-box
+              = image_tag src="https://static.mercdn.net/thumb/photos/m67395797689_1.jpg?1570195723", class:"message-box__message-list__list__link__user__image-box__image"
+            %figcaption.message-box__message-list__list__link__user__name #{@saler.nickname}
+          .message-box__message-list__list__link__seller 出品者
+        .message-box__message-list__list__detail
+          .message-box__message-list__list__detail__message-body
+            .message-box__message-list__list__detail__message-body__text 了解
+            .message-box__message-list__list__detail__message-body__icons
+              .message-box__message-list__list__detail__message-body__icons__left
+                = fa_icon 'clock-o'
+                %span.message-box__message-list__list__detail__message-body__icons__left__favorite
+                  3日前
+              .message-box__message-list__list__detail__message-body__icons__right
+                .message-box__message-list__list__detail__message-body__icons__right__form
+                = link_to root_path do
+                  = fa_icon 'flag-o'
+            .message-box__message-list__list__detail__message-body__balloon
+  = render partial: "layouts/message-submit"
+  .item-nav
+    .item-nav__prev
+      .item-nav__prev__btn
+        - if @item.previous.present?
+          = link_to item_path(@item.previous) do
+            = @item.previous.name
+            = fa_icon 'chevron-left'
+    .item-nav__next
+      .item-nav__next__btn
+        - if @item.next.present?
+          = link_to item_path(@item.next) do
+            = @item.next.name
+            = fa_icon 'chevron-right'
+  .sns
+    .sns__sns-box
+      .sns__sns-box__facebook
+        = link_to root_path do
+          %i.fab.fa-facebook-square
+      .sns__sns-box__twitter
+        = link_to root_path do
+          %i.fab.fa-twitter
+      .sns__sns-box__line
+        = link_to root_path do
+          %i.fab.fa-line
+      .sns__sns-box__pinterest
+        = link_to root_path do
+          %i.fab.fa-pinterest
+  .user-item
+    .user-item__head
+      = link_to root_path do
+        #{@saler.nickname}さんのその他の出品
+    .user-item__box
+      - @salers_item.where.not(id: @item.id).first(6).each do |item|
+        .user-item__box__card
+          = link_to item_path(item.id) do
+            .user-item__box__card__photo
+              .user-item__box__card__photo__image
+                - if Rails.env.development?
+                  = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], size:'220x220'
+                - if Rails.env.production?
+                  = image_tag item.images[0].image.url, size:'220x220'
+              - if item.buyer_id.present?
+                .similar-item__box__card__photo__text SOLD
+                .similar-item__box__card__photo__soldout
+            .user-item__box__card__body
+              .user-item__box__card__body__text #{item.name}
+              .user-item__box__card__body__num
+                .user-item__box__card__body__num__price
+                  = number_to_currency("#{item.price}", unit: "¥", precision: 0)
+                .user-item__box__card__body__num__icon
+                  = fa_icon 'heart-o', class: 'num-icon'
+                  #{item.favorites_count}
+  .similar-item
+    .similar-item__head
+      = link_to root_path do
+        #{@category.category}その他の出品
+    .similar-item__box
+      - @category.items.where.not(id: @item.id).first(6).each do |item|
+        .similar-item__box__card
+          = link_to item_path(item.id) do
+            .similar-item__box__card__photo
+              .similar-item__box__card__photo__image
+                - if Rails.env.development?
+                  = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], size:'220x220'
+                - if Rails.env.production?
+                  = image_tag item.images[0].image.url, size:'220x220'
+              - if item.buyer_id.present?
+                .similar-item__box__card__photo__text SOLD
+                .similar-item__box__card__photo__soldout
+            .similar-item__box__card__body
+              .similar-item__box__card__body__text #{item.name}
+              .similar-item__box__card__body__num
+                .similar-item__box__card__body__num__price
+                  = number_to_currency("#{item.price}", unit: "¥", precision: 0)
+                .similar-item__box__card__body__num__icon
+                  = fa_icon 'heart-o', class: 'num-icon'
+                  #{item.favorites_count}
+.bread-box
+  - breadcrumb :item
+  = breadcrumbs pretext: "", separator: " &rsaquo; "
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'

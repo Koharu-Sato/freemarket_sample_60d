@@ -1,0 +1,167 @@
+= render partial: "layouts/simpleheader"
+.send
+  .send__main
+    .send__main__content
+      %h2.send__main__content__input
+        商品の情報を入力
+      = form_with( model: @item, url: {action: "update"}, data: {remote: false}, class:"send__main__content__form" ) do |f|
+        .send__main__content__form__box1
+          %h3.send__main__content__form__box1__title
+            = f.label :出品画像
+            %span#mark
+              必須
+          %p.send__main__content__form__box1__comment
+            最大10枚までアップロードできます
+          = f.fields_for :image do |i|
+            #img-box
+              - if @item.images.length <= 5
+                #preview
+                  - @item.images.each_with_index do |image, i|
+                    .img_view(data-image="#{i}")
+                      - if Rails.env.development?
+                        = image_tag "/uploads/image/image/#{image.id}/#{image[:image]}", class: 'image'
+                      - if Rails.env.production?
+                        = image_tag image.image.url, class: 'image'
+                      .btn_box
+                        .btn_box__edit#edit
+                          編集
+                        .btn_box__delete#delete
+                          削除
+                = i.label :iamge, for:"img-file" do
+                  #img-content{style: "width: calc(100% - 130 * #{@item.images.length}px)"}
+                    #img-field
+                      = i.file_field :image, class:"upload-image", id:"img-file", 'data-image':"#{@item.images.length}", name:"item[images_attributes][#{@item.images.length}][image]"
+                      - @item.images.each_with_index do |image, i|
+                        %input{multiple:"multiple", name:"item[images_attributes][#{i}][image]", class:"hidden", type:"file", id:"img-file"}(data-image="#{i}")
+                      %p#guide
+                        クリックしてファイルをアップロード
+              - else
+                #preview
+                  - @item.images.each do |image|
+                    .img_view
+                      - if Rails.env.development?
+                        = image_tag "/uploads/image/image/#{image.id}/#{image[:image]}", class: 'image'
+                      - if Rails.env.production?
+                        = image_tag image.image.url, class: 'image'
+                      .btn_box
+                        .btn_box__edit#edit
+                          編集
+                        .btn_box__delete#delete
+                          削除
+                #img-content{style: "width: calc(100% - 130 * #{@item.images.length - 5}px)"}
+                  = i.label :iamge, for:"img-file" do
+                    #img-field
+                      = i.file_field :image, class:"upload-image", id:"img-file", 'data-image':0
+                      %p#guide
+                        クリックしてファイルをアップロード
+        .send__main__content__form__box2
+          .send__main__content__form__box2__group1
+            = f.label :商品名, id:"title"
+            %span#mark
+              必須
+            .send__main__content__form__box2__group1__content
+              = f.text_field :name, class:"send__main__content__form__box2__group1__content__form", placeholder: "商品名（必須 40文字まで)"
+          .send__main__content__form__box2__group2
+            = f.label :商品の説明, id:"title"
+            %span#mark
+              必須
+            = f.text_area :detail, class:"send__main__content__form__box2__group2__form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .send__main__content__form__box3
+          %h3.send__main__content__form__box3__title
+            商品の詳細
+          .send__main__content__form__box3__content
+            = f.fields_for :category_items do |c|
+              .send__main__content__form__box3__content__group1
+                = c.label :カテゴリー, id:"title"
+                %span#mark
+                  必須
+                .send__main__content__form__box3__content__group1__div#category-form
+                  .send__main__content__form__box3__content__group1__div__select
+                    = c.collection_select(:category_id, @grandparents, :id, :category, {selected: @grandparent.id}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"parent-form")
+                  .send__main__content__form__box3__content__group1__div__select#children_box
+                    = c.collection_select(:category_id, @parents, :id, :category, {selected: @parent.id}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"child-form")
+                  .send__main__content__form__box3__content__group1__div__select#grandchildren_box
+                    = c.collection_select(:category_id, @children, :id, :category, {prompt: "---"}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"grandchild-form")
+            .send__main__content__form__box3__content__group2#size_box
+              = f.label :サイズ, id:"title"
+              %span#mark
+                必須
+              .send__main__content__form__box3__content__group2__select
+                = f.select :size, [["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"],["2XL(3L)", "2XL(3L)"],["3XL(4L)", "3XL(4L)"],["4XL(5L)", "4XL(5L)"],["FREE SIZE", "FREE SIZE"]], {prompt: "---"}, {class:"send__main__content__form__box3__content__group1__div__select__show"}
+            .send__main__content__form__box3__content__group2#brand_form
+              = f.label :ブランド, id:"title"
+              %span#mark.gray
+                任意
+              = f.text_field :brand, class:"send__main__content__form__box3__content__group2__text", placeholder:"例） シャネル"
+            .send__main__content__form__box3__content__group2
+              = f.label :商品の状態, id:"title"
+              %span#mark
+                必須
+              .send__main__content__form__box3__content__group2__select
+                = f.select :state, [["新品、未使用", "新品、未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし", "目立った傷や汚れなし"], ["やや傷や汚れあり", "やや傷や汚れあり"], ["傷や汚れあり", "傷や汚れあり"], ["全体的に状態が悪い", "全体的に状態が悪い"]], {prompt: "---"}, {class:"send__main__content__form__box3__content__group1__div__select__show"}
+        .send__main__content__form__box4
+          %h3.send__main__content__form__box4__title
+            配送について
+          =link_to items_path, id: "question" do
+            ?
+          .send__main__content__form__box4__content
+            #shipment-box
+              .send__main__content__form__box4__content__group1
+                = f.label :配送料の負担, id:"title"
+                %span#mark
+                  必須
+                .send__main__content__form__box4__content__group1__select
+                  = f.select :delivery_fee, [["送料込み（出品者負担）", "送料込み（出品者負担）"],["着払い（購入者負担）", "着払い（購入者負担）"]], {prompt: "---"}, {class:"send__main__content__form__box4__content__group1__select__show"}
+              .send__main__content__form__box4__content__group2
+                = f.label :配送の方法, id:"title"
+                %span#mark
+                  必須
+                .send__main__content__form__box4__content__group2__select
+                  = f.select :delivery_method, [["未定", "未定"],["らくらくメルカリ便", "らくらくメルカリ便"],["ゆうメール", "ゆうメール"],["レターパック", "レターパック"],["普通郵便（定形、定形外）", "普通郵便（定形、定形外）"],["クロネコヤマト", "クロネコヤマト"],["ゆうパック", "ゆうパック"],["クリックポスト", "クリックポスト"],["ゆうパケット", "ゆうパケット"]], {prompt: "---"}, {class:"send__main__content__form__box4__content__group2__select__show"}
+            .send__main__content__form__box4__content__group2
+              = f.label :発送元の地域, id:"title"
+              %span#mark
+                必須
+              .send__main__content__form__box4__content__group2__select
+                = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: "send__main__content__form__box4__content__group2__select__show"} )
+            .send__main__content__form__box4__content__group3
+              = f.label :発送までの日数, id:"title"
+              %span#mark
+                必須
+              .send__main__content__form__box4__content__group3__select
+                = f.select :delivery_date, [["１〜２日で発送", "１〜２日で発送"],["２〜３日で発送", "２〜３日で発送"],["４〜７日で発送", "４〜７日で発送"]], {prompt: "---"}, {class:"send__main__content__form__box4__content__group1__select__show"}
+        .send__main__content__form__box5
+          %h3.send__main__content__form__box5__title
+            販売価格(300〜9,999,999)
+          =link_to items_path, id: "question" do
+            ?
+          %ul.send__main__content__form__box5__content
+            %li.send__main__content__form__box5__content__group1
+              .send__main__content__form__box5__content__group1__title
+                %label#title
+                  価格
+                  %span#mark
+                    必須
+                .send__main__content__form__box5__content__group1__title__box
+                  ¥
+                  .send__main__content__form__box5__content__group1__title__box__div
+                    = f.text_field :price, class:"send__main__content__form__box5__content__group1__title__box__div__form", placeholder: "例) 300", id: "selling-price"
+            %li.send__main__content__form__box5__content__group2
+              .send__main__content__form__box5__content__group2__left
+                販売手数料(10%)
+              .send__main__content__form__box5__content__group2__right
+                #sales-commission
+                  \-
+            %li.send__main__content__form__box5__content__group3
+              .send__main__content__form__box5__content__group3__left
+                販売利益
+              .send__main__content__form__box5__content__group3__right
+                #sales-profit
+                  \-
+        .send__main__content__form__box6
+        .send__main__content__form__box7
+          .send__main__content__form__box7__notice
+          = f.submit '変更する', id:"post"
+          = link_to items_path, class: "send__main__content__form__box7__return" do
+            キャンセル
+= render partial: "layouts/simplefooter"

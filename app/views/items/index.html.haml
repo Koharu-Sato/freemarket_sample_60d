@@ -1,0 +1,83 @@
+= render partial: "layouts/header"
+.body
+  .slick_bar
+    %img{src:"https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?2296184308", class:"slick_bar__image"}
+    .slick_bar__left
+      .slick_bar__left__button
+        <
+    .slick_bar__right
+      .slick_bar__right__button
+        > 
+          
+  .content
+    .category
+      .category__top
+        .category__top__title
+          人気のカテゴリー
+        .category__top__contents
+          .category__top__contents__box
+            - @categories.each do |category|
+              .category__top__contents__box__rank{data: {id: category.id}}
+                = category.category
+
+    - @categories.each_with_index do |category, index|
+      .category__new-items
+        .category__new-items__upper
+          .category__new-items__upper__text{data: {name: category.id}}
+            = "#{category.category}新着アイテム"
+          = link_to(category_path(category.id), class: "category__new-items__upper__more") do
+            もっと見る >
+        .category__new-items__itembox
+          - @all_items[index].each do |item|
+            = link_to(item_path(item.id), method: :get, class: "category__new-items__itembox__item itembox__item") do
+              .item
+                - if item.buyer_id.present?
+                  .item__sold-text SOLD
+                  .item__soldout
+                .category__new-items__itembox__item__image.item__image
+                  - if Rails.env.development?
+                    = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], class: "category__new-items__itembox__item__image-url item__image-url"
+                  - if Rails.env.production?
+                    = image_tag item.images[0].image.url, class: "category__new-items__itembox__item__image-url item__image-url"
+                  .category__new-items__itembox__item__image__price.item__image__price
+                    = "¥#{item.price}"
+                .category__new-items__itembox__item__name.item__name
+                  = item.name
+
+    .category
+      .category__top
+        .category__top__title
+          人気のブランド
+        .category__top__contents
+          .category__top__contents__box
+            - @brands.each do |brand|
+              = link_to(root_path, class: "category__top__contents__box__rank") do
+                = brand
+
+    - @brands.each_with_index do |brand, index|
+      .category__new-items
+        .category__new-items__upper
+          .category__new-items__upper__text
+            = "#{brand}新着アイテム"
+          = link_to(root_path, class: "category__new-items__upper__more") do
+            もっと見る >
+        .category__new-items__itembox
+          - @all_brand_items[index].each do |item|
+            = link_to(item_path(item.id), method: :get, class: "category__new-items__itembox__item itembox__item") do
+              .item
+                - if item.buyer_id.present?
+                  .item__sold-text SOLD
+                  .item__soldout
+                .category__new-items__itembox__item__image.item__image
+                  - if Rails.env.development?
+                    = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], class: "category__new-items__itembox__item__image-url item__image-url"
+                  - if Rails.env.production?
+                    = image_tag item.images[0].image.url, class: "category__new-items__itembox__item__image-url item__image-url"
+                  .category__new-items__itembox__item__image__price.item__image__price
+                    = "¥#{item.price}"
+                .category__new-items__itembox__item__name.item__name
+                  = item.name
+
+= render partial: 'layouts/button'            
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'

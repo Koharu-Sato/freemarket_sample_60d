@@ -1,0 +1,86 @@
+= render partial: "layouts/header"
+
+.search
+  .search__wrapper
+    .left__box
+      = search_form_for(@search, url: search_items_path, method: :get) do |f|
+        .left__box__sort
+          = f.select :sorts, { "並び替え":"id desc", "価格の安い順":"price asc", "価格の高い順":"price desc", "出品の古い順":"updated_at asc", "出品の新しい順":"updated_at desc", "いいね!の多い順":"favorites_count desc"} , { selected: params[:q][:sorts] }, { onchange: "this.form.submit()"}
+        .left__box__detail
+          %h1 詳細検索
+          .left__box__detail__keyword
+            = f.label "キーワードを追加する"
+            = f.search_field :name_cont, placeholder:"例）値下げ"
+          
+          -# .search__category#category-form
+          -#   = f.label :category_items_id_eq, "カテゴリーを選択する"
+          -#   = f.collection_select :category_items_id_eq, @category, :id, :category, {prompt: "---"}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"parent-form"
+          -#     非同期で出てくる要素のnameに、qがないから成功しない。中間テーブルを検索してしまっている。別テーブルなので持ってこれてないっぽい。
+          
+          .left__box__detail__brand
+            = f.label "ブランド名から探す"
+            = f.search_field :brand_cont, placeholder:"例）シャネル"
+          .left__box__detail__size
+            = f.label "サイズを指定する"
+            = f.select :size_cont, [["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"],["2XL(3L)", "2XL(3L)"],["3XL(4L)", "3XL(4L)"],["4XL(5L)", "4XL(5L)"],["FREE SIZE", "FREE SIZE"]], {prompt: "---"}, {class:"send__main__content__form__box3__content__group1__div__select__show"}
+          .left__box__detail__price
+            = f.label "価格"
+            .left__box__detail__price__box
+              = f.number_field :price_gteq, placeholder:"¥ Min"
+              = f.label "~"
+              = f.number_field :price_lteq, placeholder:"¥ Max"
+          .left__box__detail__state
+            .left__box__detail__text 商品の状態
+            .left__box__detail__state__box
+              - ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"].each do |state|
+                .left__box__detail__state__box__boxes
+                  = f.check_box :state_eq_any, {multiple: true}, checked_value = "#{state}", unchecked_value = ""
+                  = f.label "#{state}"
+          .left__box__detail__delivery-fee
+            .left__box__detail__delivery-fee__text 配送料の負担
+            .left__box__detail__delivery-fee__box
+              - ["送料込み（出品者負担）", "着払い（購入者負担）"].each do |fee|
+                .left__box__detail__delivery-fee__box__boxes
+                  = f.check_box :delivery_fee_eq_any, {multiple: true}, checked_value = "#{fee}", unchecked_value = ""
+                  = f.label "#{fee}"
+          .left__box__detail__order-status
+            .left__box__detail__order-status__text 販売状況
+            .left__box__detail__order-status__sale
+              .left__box__detail__order-status__sale__boxes
+                = f.check_box :buyer_id_null, as: :boolean, include_hidden: false
+                = f.label "販売中"
+              .left__box__detail__order-status__sale__boxes
+                = f.check_box :buyer_id_not_null, as: :boolean, include_hidden: false
+                = f.label "売り切れ"
+          .left__box__detail__btn
+            .left__box__detail__btn__clear
+              = f.submit "クリア", type: :reset
+            .left__box__detail__btn__fix
+              = f.submit "完了"
+        
+    .right__box
+      .search-sort
+      %section.search-container
+        - if params[:search] != ""
+          %h2.result
+            %span 検索結果
+          .search-container__count
+            = "1 - #{@items.length}件表示"
+        - else
+          %h2 新着商品
+        .search-container__results
+          - @items.each do |item|
+            = link_to(item_path(item.id), method: :get, class: "search-container__results__item") do
+              .search-container__results__item__image
+                - if Rails.env.development?
+                  = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], class: "search-container__results__item__image-url"
+                - if Rails.env.production?
+                  = image_tag item.images[0].image.url, class: "search-container__results__item__image-url"
+                .search-container__results__item__image__price
+                  = "¥#{item.price}"
+              .search-container__results__item__name
+                = item.name
+-# - binding.pry
+= render partial: "layouts/button"
+= render partial: "layouts/aside"
+= render partial: "layouts/footer"

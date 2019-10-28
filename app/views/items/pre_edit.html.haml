@@ -1,0 +1,18 @@
+-# 顔文字を表示させるために導入
+%script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/8da05e3b5a.js"}
+
+.show-japan
+  = render partial: "layouts/header"
+  - breadcrumb :pre_edit
+  = render partial: 'layouts/navbar'
+.show-wrapper
+  .show-box
+    = render partial: "layouts/show-box"
+  .selection-box
+    = link_to("商品の編集", edit_item_path(@item.id), class: "selection-box__edit")
+    .selection-box__text-center or
+    = link_to("出品を一旦停止する", root_path, class: "selection-box__button")
+    = link_to("この商品を削除する", item_path(@item.id), method: :delete, class: "selection-box__button")
+  = render partial: "layouts/message-submit"
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'
