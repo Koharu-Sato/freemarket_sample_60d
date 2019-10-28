@@ -168,3 +168,4 @@ ActiveRecord::Schema.define(version: 2019_10_28_071751) do
   add_foreign_key "orders", "items"
   add_foreign_key "reviews", "users"
   add_foreign_key "sns_credentials", "users"
+end
