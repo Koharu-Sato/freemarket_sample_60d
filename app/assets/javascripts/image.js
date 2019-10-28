@@ -2,7 +2,6 @@ $(function(){
     var setMainId = "#slider_main";
     var setThumbId = '#slider_thumb';
     var slideTime = 250;
-    // var delayTime = 99999999999;
 
     $(setMainId).each(function(){
         var sliderWidth = $(this).width();
