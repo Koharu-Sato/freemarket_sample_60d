@@ -1,0 +1,259 @@
+@mixin box {
+  display: flex;
+  -webkit-box-pack: justify;
+}
+
+@mixin categories {
+  cursor: pointer;
+  height: 44px;
+  position: relative;
+  &__link {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 36px;
+    white-space: nowrap;
+    &__icon{
+    }
+  }
+}
+
+@mixin list_user {
+  cursor: pointer;
+  padding-right: 14px;
+  height: 44px;
+  position: relative;
+  &__link {
+    -webkit-box-align: center;
+    align-items: center;display: flex;
+    font-size: 14px;
+    height: 32px;
+    &__icon {
+    }
+  }
+}
+
+@mixin btn {
+  display: block;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header {
+  a:hover {
+    color: rgb(0,149,238);
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+.icon-orange {
+  color: rgb(234, 53, 45);
+  margin-right: 4px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.icon-gray {
+  color: rgb(204, 204, 204);
+  max-width: 100%;
+  max-height: 100%;
+  margin-right: 10px;
+  font-size: 1.4rem;
+  font-weight: lighter;
+}
+
+.header {
+  width: 100%;
+  background-color: rgb(255,255,255);
+  // box-shadow: 0 0 5px;
+  height: 100px;
+  &__box {
+    height: calc(100% - 7px);
+    width: 1020px;
+    margin: 0 auto;
+    padding-top: 7px;
+    &__upper {
+      @include box;
+      &__logo{
+        align-items: center;
+        margin-right: 45px;
+        height: 40px;
+        .logo-link{
+          color: inherit;
+          text-decoration: none;
+          &__image{
+            height: 34px;
+            width: 134px;
+          }
+        }
+      }
+      &__search-form{
+        width: 100%;
+        position: relative;
+        &__input{
+          background-color: rgb(245, 245, 245);
+          border-color: rgb(204, 204, 204);
+          border-style: solid;
+          border-image: initial;
+          width: calc(100% - 62px);
+          border-width: 1px;
+          border-radius: 4px;
+          padding: 0 50px 0 10px;
+          height: calc(100% - 2px);
+          font-size: 16px;
+        }
+        &__btn{
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: transparent;
+          border: none;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    &__lower {
+      @include box;
+      justify-content: space-between;
+      margin-top: 8px;
+      &__list-categories {
+        display: flex;
+        &__category {
+          padding-right: 10px;
+          // background-color: #ea352d;
+          @include categories;
+        }
+        &__brand {
+          padding-left: 10px;
+          @include categories;
+        }
+      }
+      &__list-user {
+        display: flex;
+        position: relative;
+        a:hover {
+          color: rgb(0,149,238);
+          i {
+            color: rgb(0,149,238);
+          }
+        }
+        &__favorite{
+          @include list-user;
+        }
+        &__notice{
+          padding-left: 14px;
+          @include list-user;
+        }
+        &__todo{
+          padding-left: 14px;
+          @include list-user;
+        }
+        &__mypage{
+          padding-left: 14px;
+          @include list-user;
+          &__link__icon{
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+          }
+        }
+      }
+      &__btn-box{
+        display: flex;
+        &__btn{
+          text-align: center;
+          margin-left: 11px;
+          &__orange{
+            background-color: rgb(234, 53, 45);
+            color: rgb(255,255,255);
+            border-color: rgb(234, 53, 45);
+            @include btn;
+          }
+          &__blue{
+            background-color: rgb(255,255,255);
+            color: rgb(0,149,238);
+            border-color: rgb(0,149,238);
+            @include btn
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//headerのカテゴリリスト
+
+#categoryAll{
+
+  #categoryBox{
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    &__box{
+    }
+    &__childbox{
+      background-color: white;
+      height: 616px;
+    }
+    &__grandchildbox{
+      background-color: white;
+      height: 616px;
+    }
+  }
+}
+
+
+
+@mixin category-list {
+  // display: none;
+  display: block;
+  background-color: white;
+  font-size: 13px;
+  padding-left: 15px;
+  border-left: solid 1px #eee;
+}
+
+.categoryList{
+  @include category-list;
+  line-height: 44px;
+  width: 200px;
+}
+.categoryList:hover{
+  background-color: #ea352d;
+  color: white;
+}
+
+.childcategoryList{
+  @include category-list;
+  line-height: 30px;
+  width: 200px;
+}
+.childcategoryList:hover{
+  background-color: #eee;
+}
+
+.grandchildcategoryList{
+  @include category-list;
+  line-height: 30px;
+  width: 200px;
+  border-right: solid 1px #eee;
+}
+.grandchildcategoryList:hover{
+  background-color: #eee;
+}

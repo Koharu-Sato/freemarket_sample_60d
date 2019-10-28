@@ -9,7 +9,31 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
  *= require_self
+ *= require font-awesome
  */
+
+@import 'reset';
+@import 'color';
+@import 'mixin';
+@import 'font-awesome';
+@import 'header';
+@import 'footer';
+@import 'items/show';
+@import 'aside';
+@import 'category';
+@import 'index';
+@import 'navbar';
+@import 'users/edit';
+@import 'show';
+@import 'simple';
+@import 'registration';
+@import 'session';
+@import 'new';
+@import 'order/new';
+@import 'credit';
+@import 'button';
+@import 'users/myitem';
+@import 'error_messages';
+@import 'items/search';
+@import 'category'

@@ -1,0 +1,32 @@
+.title {
+  font-weight: 600;
+}
+
+.nav {
+  background: white;
+  border-top: 1px solid #eee;
+  z-index: 1;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  &__list {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    white-space: normal;
+    overflow: visible;
+    &__log {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      &__icon {
+        margin: 0 8px;
+        font-size: 8px;
+        color: #888;
+      }
+    }
+  }
+}
+
+.current {
+  font-weight: 600;
+}
