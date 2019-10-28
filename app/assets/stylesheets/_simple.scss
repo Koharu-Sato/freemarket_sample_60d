@@ -1,0 +1,56 @@
+//購入時などのシンプルなheader,footer
+.simple-header {
+  width: 100vw;
+  height: 128px;
+  background-color: rgb(245,245,245);
+  &__logo{
+    padding-top: 40px;
+    width: 185px;
+    height: 49px;
+    margin: auto;
+  }
+}
+
+.simple-footer {
+  height: 220px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(245,245,245);
+  &__center {
+    height: 220px;
+    width: 456px;
+    margin-left: calc(50vw - 228px);
+    margin-right: calc(50vw - 228px);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    color: rgb(51,51,51);
+    &__pr {
+      height: 12px;
+      width: 456px;
+      padding-left: 38.655px;
+      &__li {
+        font-size: 12px;
+        line-height: 12px;
+        float: left;
+      }
+      &__li2 {
+        font-size: 12px;
+        line-height: 12px;
+        float: left;
+        padding-left: 16px;
+      }
+    }
+    &__logo {
+      height: 105px;
+      width: 456px;
+      padding: 40px 188px 0 188px;
+      box-sizing: border-box;
+    }
+    &__c {
+      padding-top: 8px;
+      font-size: 13px;
+      text-align: center;
+    }
+  }
+}

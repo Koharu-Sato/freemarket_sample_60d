@@ -1,0 +1,96 @@
+//カテゴリ一覧ページ(都道府県も)
+
+//カテゴリ説明mixin
+@mixin category{
+  background-color: white;
+  width: 100%;
+}
+@mixin category-title {
+  background-color: #ea352d;
+  font: bold 22px "MS ゴシック";
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.category-links{
+  color: #0095ee;
+  font-size: 13px;
+  margin-right: 10px;
+}
+#category-list{
+  margin-bottom: 20px;
+}
+
+#back{
+  background-color: rgb(245, 245, 245);
+}
+
+.categories{
+  width: 700px;
+  margin: 40px auto;
+  &__box{
+    width: 100%;
+    &__header{
+      font-size: 20px;
+      font-weight: 600;
+      color: rgb(51, 51, 51);
+      margin-bottom: 20px;
+    }
+    &__root{
+      margin-bottom: 30px;
+      &__category{
+        text-align: center;
+        display: inline-block;
+        min-width: 60px;
+        height: 40px;
+        background-color: white;
+        border-radius: 4px;
+        font-size: 15px;
+        padding: 0 30px;
+        margin: 5px;
+        line-height: 40px;
+        color: #333;
+        cursor: pointer;
+      }
+    }
+    &__index{
+      @include category;
+      margin-top: 30px;
+      border-radius: 10px;
+      &__title{
+        @include category-title;
+        padding-left: 30px;
+        line-height: 40px;
+      }
+      &__text{
+        padding: 30px 20px;
+        font-size: 15px;
+        padding: 24px 30px 10px 30px;
+        &__link{
+          color: #0099e8;
+          line-height: 50px;
+        }
+        &__child{
+          &__black{
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 50px;
+          }
+          &__blue{
+            &__link{
+              display: inline-block;
+              width: 50%;
+              line-height: 40px;
+              color: #0099e8;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.categories__box__root__category:hover{
+  background-color: #ea352d;
+  color: white;
+}

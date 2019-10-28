@@ -1,0 +1,143 @@
+@mixin form {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 8px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.font {
+  font-size: 14px;
+  margin-top: 7px;
+  color: #333333;
+}
+
+.link {
+  font-size: 14px;
+  margin-top: 8px;
+  text-align: right;
+}
+
+.color {
+  color: rgb(0,149,238);
+}
+
+.wrapper {
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(245,245,245);
+  .container {
+    width: 1020px;
+    overflow: scroll;
+    padding: 0 0 40px;
+    margin: 40px auto 0;
+    display: block;
+    &__box-edit {
+      float: right;
+      width: 700px;
+      &__section {
+        background-color: rgb(255, 255, 255);
+        &__title {
+          height: calc(100% - 3px);
+          font-size: 24px;
+          padding: 8px 24px;
+          text-align: center;
+          border-bottom: 1px solid rgb(245,245,245);
+        }
+        &__user-edit{
+          padding: 64px;
+          .form-group {
+            margin-top: 40px;
+            &__label{
+              font-size: 14px;
+              font-weight: 600;
+              display: inline-block;
+            }
+            &__span {
+              align-items: center;
+              background: rgb(204, 204, 204);
+              margin-top: 3px;
+              margin-left: 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: rgb(255, 255, 255);
+              font-size: 13px;
+              vertical-align: top;
+            }
+            &__form {
+              @include form
+            }
+          }
+          &__btn {
+            margin-top: 40px;
+            background-color: rgb(234, 53, 45);
+            border: 1px solid rgb(234, 53, 45);
+            color: rgb(255, 255, 255);
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.left {
+  height: 1252px;
+  width: 280px;
+  float: left;
+  box-sizing: border-box;
+  margin-right: 40px;
+  &__mypage {
+    height: 686px;
+    box-sizing: border-box;
+    &__li {
+      height: 49px;
+      width: 280px;
+      padding: 16px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 400;
+      background-color: rgb(255,255,255);
+      border-bottom-style: solid;
+      border-bottom-width: thin;
+      border-bottom-color: rgb(245, 245, 245);
+      &__fa {
+        float: right;
+        color: rgb(141,141,141);
+      }
+    }
+  }
+  &__title {
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    &__li {
+      height: 49px;
+      padding: 16px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 400;
+      background-color: rgb(255,255,255);
+      border-bottom-style: solid;
+      border-bottom-width: thin;
+      border-bottom-color: rgb(245, 245, 245);
+      &__fa {
+        float: right;
+        color: rgb(141,141,141);
+      }
+    }
+  }
+}
+
+

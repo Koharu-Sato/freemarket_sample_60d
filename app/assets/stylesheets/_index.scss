@@ -1,0 +1,216 @@
+//items#index
+
+//item箱mixin
+@mixin item-box{
+
+  margin-right: 16px;
+  margin-bottom: 16px;
+  height: 252px;
+  width: 188px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,.18);
+  float: left;
+  &__image {
+    height: 188px;
+    width: 188px;
+    background-color: white;
+    box-sizing: border-box;
+    position: relative;
+    &-url{
+      width: 100%;
+      height: 100%;
+    }
+    &__price {
+      position: absolute;
+      bottom: 10px;
+      height: 28px;
+      width: 80px;  //値段によって変わる
+      line-height: 28px;
+      font-size: 15px;
+      text-align: center;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 0 14px 14px 0;
+    }
+  }
+  &__name {
+    height: 64px;
+    width: 188px;
+    padding: 12.4px 14px;
+    font-size: 14px;
+    line-height: 19.6px;
+    box-sizing: border-box;
+    overflow: hidden;
+    &__favorites{
+      text-align: right;
+    }
+  }
+}
+
+
+
+.body {
+  overflow: scroll;
+  box-sizing: border-box;
+  .slick_bar {
+    z-index: 0;
+    height: 390px;
+    width: 100%;
+    background-color: rgb(230,230,230);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+    &__image {
+      height: 390px;
+      padding-left: calc(50vw - 380.25px);
+      position: absolute;
+    }
+    &__left {
+      height: 46px;
+      width: 91px;
+      float: left;
+      line-height: 390px;
+      position: absolute;
+      &__button {
+        text-align: right;
+        font-size: 46px;
+        color: white;
+        font-weight: 400;
+      }
+    }
+    &__right {
+      height: 46px;
+      width: 91px;
+      float: right;
+      line-height: 390px;
+      position: absolute;
+      left: calc(100vw - 91px);
+      &__button {
+        font-size: 46px;
+        color: white;
+        font-weight: 400;
+      }
+    }
+  }
+  .content {
+    .category {
+      &__top {
+        padding-top: 56px;
+        margin-bottom: 30px;
+        &__title {
+          height: 39px;
+          width: 100%;
+          text-align: center;
+          font-size: 28px;
+          font-weight: 600;
+          color: rgb(51, 51, 51);
+        }
+        &__contents {
+          padding-top: 16px;
+          text-align: center;
+          height: 40px;
+          box-sizing: border-box;
+          width: 100%;
+          font-weight: 600;
+          color: rgb(51, 51, 51);
+          &__box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &__rank {
+              display: block;
+              height: 30px;
+              min-width: 30px;
+              padding: 2px 10px;
+              width: auto;
+              margin-right: 10px;
+              background-color: rgb(245, 245, 245);
+              font-size: 14px;
+              line-height: 30px;
+              border-radius: 15px;
+              cursor : pointer;
+            }
+          }
+        }
+      }
+      &__new-items {
+        background-color: rgb(245, 245, 245);
+        height: 715px;
+        width: 100%;
+        padding-top: 42px;
+        padding-left: calc(50vw - 510px);
+        padding-right: calc(50vw - 510px);
+        box-sizing: border-box;
+        &__upper {
+          height: 33px;
+          width: 100%;
+          display: flex;
+          &__text {
+            font-size: 24px;
+            line-height: 33px;
+            font-weight: 600;
+          }
+          &__more {
+            margin-left: auto;
+            color: rgb(0,149,238);
+            line-height: 33px;
+            font-size: 14px;
+            font-weight: 600;
+          }
+        }
+        &__itembox {
+          padding-top: 16px;
+          height: 268px;
+          box-sizing: border-box;
+          &__item{
+            .item{
+              width: 100%;
+              height: 100%;
+              @include item-box;
+              position: relative;
+              &__sold-text {
+                color: #fff;
+                font-size: 23px;
+                font-weight: 600;
+                left: 0;
+                position: absolute;
+                top: 20px;
+                transform:rotate(-45deg);
+                z-index: 3;
+              }
+              &__soldout {
+                border-top: 50px solid #ea352d;
+                border-left: 50px solid #ea352d;
+                border-right: 50px solid transparent;
+                border-bottom: 50px solid transparent;
+                position: absolute;
+                z-index: 2;
+                width: 0;
+                height: 0;
+              }
+            }
+          }
+        }
+        &__explain{
+          @include category;
+          height: 180px;
+          margin-top: 30px;
+          border-radius: 10px;
+          &__title{
+            @include category-title;
+            line-height: 60px;
+            text-align: center;
+          }
+          &__text{
+            padding: 30px 20px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.item:hover{
+  border: solid 1px rgb(0,149,238);
+}

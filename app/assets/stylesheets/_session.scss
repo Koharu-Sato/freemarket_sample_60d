@@ -1,0 +1,40 @@
+//ログインページ
+.login__box{
+  width: 456px;
+  height: 406px;
+}
+.registry-box__title{
+  &__text{
+    font-size: 13px;
+  }
+  &__link{
+    background-color: #0099e8;
+    height: 42px;
+    width: 328px;
+    margin: 0 auto;
+    line-height: 38px;
+  }
+}
+.new-link{
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.forgot{
+  text-align: left;
+  &-link{
+    color: #0099e8;
+  }
+}
+
+.loginwidth{
+  width: 328px;
+  padding-top: 20px;
+}
+
+.attenton-password{
+  font-size: 12px;
+  text-align: left;
+  line-height: 18px;
+  color: #888888;
+}
