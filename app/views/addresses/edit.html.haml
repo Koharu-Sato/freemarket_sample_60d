@@ -1,0 +1,62 @@
+= render partial: 'layouts/header'
+- breadcrumb :edit
+= render partial: 'layouts/navbar'
+- if flash[:notice] == "編集しました"
+  .flash
+    = flash[:notice]
+.wrapper
+  %main.container
+    .container__box-edit
+      %section.container__box-edit__section
+        %h2.container__box-edit__section__title
+          本人情報の登録
+        = form_with( model: @address, class:"container__box-edit__section__user-edit") do |f|
+          %div
+            %p.font
+              お客様の本人情報をご登録ご登録ください。
+              %br
+              登録されたお名前・生年月日を変更する場合、本人確認書類が必要になります。
+            %p.link
+              =link_to root_path, class:"color" do
+                本人確認書類のアップデートについて
+                %i.fa.fa-chevron-right
+          .form-group
+            = f.label :お名前, class:"form-group__label"
+            %p.font #{@user.family_name} #{@user.first_name}
+          .form-group
+            = f.label :お名前カナ, class:"form-group__label"
+            %p.font #{@user.family_name_kana} #{@user.first_name_kana}
+          .form-group
+            = f.label :生年月日, class:"form-group__label"
+            %p.font #{@birth}
+          .form-group
+            = f.label :郵便番号, class:"form-group__label"
+            %span.form-group__span 任意
+            = f.text_field :postal_code, placeholder:"例）1234567", class:"form-group__form"
+          .form-group
+            = f.label :都道府県, class:"form-group__label"
+            %span.form-group__span 任意
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: ""}, {class: "form-group__form"} )
+          .form-group
+            = f.label :市町村区, class:"form-group__label"
+            %span.form-group__span 任意
+            = f.text_field :city, placeholder:"例）大阪市中央区", class:"form-group__form"
+          .form-group
+            = f.label :番地, class:"form-group__label"
+            %span.form-group__span 任意
+            = f.text_field :block, placeholder:"例）難波5丁目1-60", class:"form-group__form"
+          .form-group
+            = f.label :建物名, class:"form-group__label"
+            %span.form-group__span 任意
+            = f.text_field :building, placeholder:"例）なんばスカイオ15階", class:"form-group__form"
+          = f.submit "登録する", class:"container__box-edit__section__user-edit__btn"
+          .form-group
+            %p.link
+              = link_to root_path, class:"color" do
+                本人情報の登録について
+                %i.fa.fa-chevron-right
+    = render partial: "users/side_bar"
+
+= render partial: 'layouts/button'
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'
