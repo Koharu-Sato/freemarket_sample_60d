@@ -1,0 +1,92 @@
+.show-japan
+  = render partial: "layouts/header"
+  - breadcrumb :user
+  = render partial: 'layouts/navbar'
+  .show
+    = render partial: "side_bar"
+    .right
+      .right__profile
+        .right__profile__user
+          .right__profile__user__icon
+            %img#user-icon{src: "https://static.mercdn.net/images/member_photo_noimage_thumb.png", width: "60", height: "60"}
+          .right__profile__user__name
+            #{current_user.nickname}
+          .right__profile__user__reviews
+            評価 200 出品数 100
+        .right__profile__lower
+          .right__profile__lower__tab
+            .right__profile__lower__tab__news
+              お知らせ
+            .right__profile__lower__tab__lists
+              やることリスト
+          .right__profile__lower__li
+            .right__profile__lower__li__icon
+              = image_tag src="https://static.mercdn.net/images/mercari_profile.png", size: "48x48"
+            .right__profile__lower__li__center
+              .right__profile__lower__li__center__text
+                事務局からメッセージ
+              .right__profile__lower__li__center__time
+                = fa_icon 'clock-o flip-horizontal', class: 'right__profile__lower__li__center__fa'
+                1日前
+            .right__profile__lower__li__chevron
+              = fa_icon 'chevron-right'
+          .right__profile__lower__li
+            .right__profile__lower__li__icon
+              = image_tag src="https://static.mercdn.net/images/mercari_profile.png", size: "48x48"
+            .right__profile__lower__li__center
+              .right__profile__lower__li__center__text
+                事務局からメッセージ
+              .right__profile__lower__li__center__time
+                = fa_icon 'clock-o flip-horizontal', class: 'right__profile__lower__li__center__fa'
+                2日前
+            .right__profile__lower__li__chevron
+              = fa_icon 'chevron-right'
+          .right__profile__lower__li
+            .right__profile__lower__li__icon
+              = image_tag src="https://static.mercdn.net/images/mercari_profile.png", size: "48x48"
+            .right__profile__lower__li__center
+              .right__profile__lower__li__center__text
+                事務局からメッセージ
+              .right__profile__lower__li__center__time
+                = fa_icon 'clock-o flip-horizontal', class: 'right__profile__lower__li__center__fa'
+                3日前
+            .right__profile__lower__li__chevron
+              = fa_icon 'chevron-right'
+          .right__profile__lower__li
+            .right__profile__lower__li__icon
+              = image_tag src="https://static.mercdn.net/images/mercari_profile.png", size: "48x48"
+            .right__profile__lower__li__center
+              .right__profile__lower__li__center__text
+                事務局からメッセージ
+              .right__profile__lower__li__center__time
+                = fa_icon 'clock-o flip-horizontal', class: 'right__profile__lower__li__center__fa'
+                4日前
+            .right__profile__lower__li__chevron
+              = fa_icon 'chevron-right'
+          .right__profile__lower__li
+            .right__profile__lower__li__icon
+              = image_tag src="https://static.mercdn.net/images/mercari_profile.png", size: "48x48"
+            .right__profile__lower__li__center
+              .right__profile__lower__li__center__text
+                事務局からメッセージ
+              .right__profile__lower__li__center__time
+                = fa_icon 'clock-o flip-horizontal', class: 'right__profile__lower__li__center__fa'
+                5日前
+            .right__profile__lower__li__chevron
+              = fa_icon 'chevron-right'
+          .right__profile__lower__more
+            .right__profile__lower__more__text
+              一覧を見る
+      .right__bought-items
+        .right__bought-items__title
+          購入した商品
+        .right__bought-items__tab
+          .right__bought-items__tab__now
+            取引中
+          .right__bought-items__tab__past
+            過去の取引
+        .right__bought-items__lists
+          取引中の商品がありません
+= render partial: 'layouts/button' 
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'

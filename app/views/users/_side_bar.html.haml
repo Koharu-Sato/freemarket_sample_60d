@@ -1,0 +1,82 @@
+.left
+  .left__mypage
+    = link_to user_path(current_user.id) do
+      .left__mypage__li#mypage 
+        マイページ
+        = fa_icon 'chevron-right', class: 'left__mypage__li__fa', id: 'fafa'
+    .left__mypage__li
+      お知らせ
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      やることリスト
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      いいね！一覧
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      出品する
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    = link_to myitem_user_path(current_user.id) do
+      .left__mypage__li
+        出品した商品-出品中
+        = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      出品した商品-取引中
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      出品した商品-売却済み
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      購入した商品-取引中
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      購入した商品-過去の取引
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      ニュースの一覧
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      評価一覧
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      ガイド
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+    .left__mypage__li
+      お問い合わせ
+      = fa_icon 'chevron-right', class: 'left__mypage__li__fa'
+  .left__title
+    メルペイ
+    .left__title__li
+      売上・振込申請
+      = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    .left__title__li
+      ポイント
+      = fa_icon 'chevron-right', class: 'left__title__li__fa'
+  .left__title
+    設定
+    = link_to profile_user_path do
+      .left__title__li
+        プロフィール
+        = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    .left__title__li
+      発送元・お届け先住所変更
+      = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    = link_to card_path(current_user.id) do
+      .left__title__li
+        支払い方法
+        = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    .left__title__li
+      メール/パスワード
+      = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    = link_to edit_address_path(current_user.addresses.ids) do
+      .left__title__li
+        本人情報
+        = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    .left__title__li
+      電話番号の確認
+      = fa_icon 'chevron-right', class: 'left__title__li__fa'
+    = link_to logout_user_path do
+      .left__title__li
+        ログアウト
+        = fa_icon 'chevron-right', class: 'left__title__li__fa'
+      
