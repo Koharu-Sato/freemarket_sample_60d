@@ -1,0 +1,60 @@
+= render partial: "layouts/header" 
+- breadcrumb :category
+= render partial: 'layouts/navbar'
+.body
+  .content
+    .category
+      .category__new-items
+        #category-list
+          - @category.children.each do |category|
+            = link_to(category_path(category.id), class: "category-links") do
+              = category.category
+          - if @category.children == []
+            - @category.parent.children.each do |category|
+              = link_to(category_path(category.id), class: "category-links") do
+                = category.category
+        .category__new-items__upper
+          .category__new-items__upper__text
+            = "#{@category.category}商品一覧"
+        .category__new-items__itembox
+          - @items.each do |item|
+            = link_to(item_path(item.id), method: :get, class: "category__new-items__itembox__item") do
+              .item
+                .category__new-items__itembox__item__image.item__image
+                  - if Rails.env.development?
+                    = image_tag "/uploads/image/image/#{item.images.ids[0]}/"+item.images[0][:image], class: "category__new-items__itembox__item__image-url item__image-url"
+                  - if Rails.env.production?
+                    = image_tag item.images[0].image.url, class: "category__new-items__itembox__item__image-url item__image-url"
+                  .category__new-items__itembox__item__image__price.item__image__price
+                    = "¥#{item.price}"
+                .category__new-items__itembox__item__name.item__name
+                  = item.name
+                  - if item.favorites_count.present?
+                    .category__new-items__itembox__item__name__favorites.item__name__favorites
+                      = "♡ #{item.favorites_count}"
+        .category__new-items__explain
+          .category__new-items__explain__title
+            = @category.category
+            - if @category.ancestry != nil
+              = "(#{@category.root.category})"
+          .category__new-items__explain__text
+            = @category.category
+            - if @category.ancestry != nil
+              = "(#{@category.root.category})"
+            の着ない服、いらない洋服を売るならメルカリへ。
+            - if @category.ancestry == nil
+              = "#{@category.category}の"
+            - if @category.ancestry != nil
+              = "#{@category.category}は#{@category.parent.category}の下にあるカテゴリで"
+            商品は
+            = "#{@length}"
+            点以上あります。特に人気の商品は
+            - @favorites_items.each do |item|
+              = "「#{item.name}」"
+            があります。
+            = @category.category
+            の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。
+            
+= render partial: 'layouts/button'
+= render partial: 'layouts/aside'
+= render partial: 'layouts/footer'
