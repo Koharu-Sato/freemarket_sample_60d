@@ -21,12 +21,12 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-set :default_env, {
-  rbenv_root:
-  path:
-  AWS_ACCESS_KEY_ID:
-  AWS_SECRET_ACCESS_KEY:
-}
+# set :default_env, {
+#   rbenv_root:
+#   path:
+#   AWS_ACCESS_KEY_ID:
+#   AWS_SECRET_ACCESS_KEY:
+# }
 
 set :linked_files, %w{ config/master.key }
 
