@@ -28,4 +28,16 @@ namespace :deploy do
     invoke 'unicorn:stop'
     invoke 'unicorn:start'
   end
+
+  desc 'upload master.key'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/master.key', "#{shared_path}/config/master.key")
+    end
+  end
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
 end
