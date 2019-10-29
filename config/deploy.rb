@@ -4,6 +4,7 @@ lock "~> 3.11.2"
 set :application, "freemarket_sample_60d"
 set :repo_url, "git@github.com:Koharu-Sato/freemarket_sample_60d.git"
 
+append :linked_files, 'config/master.key'
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
