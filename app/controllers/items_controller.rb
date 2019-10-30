@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def getCategory
-    @categoryList = Category.where(ancestry: nil) 
+    @categoryList = Category.where(ancestry: nil)
   end
   def getAllCategory
     # @categoryAll = Category.all
@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
     if @item.saler_id == current_user.id && @item.update(item_params)
       redirect_to pre_edit_item_path(@item.id)
     else
-      redirect_to root_path
+      redirect_to root_path, notice:"この商品は編集できません"
     end
   end
 

@@ -55,8 +55,8 @@
                     = c.collection_select(:category_id, @category, :id, :category, {prompt: "---"}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"parent-form")
             .send__main__content__form__box3__content__group2#size_box
               = f.label :サイズ, id:"title"
-              %span#mark
-                必須
+              %span#mark.gray
+                任意
               .send__main__content__form__box3__content__group2__select
                 = f.select :size, [["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"],["2XL(3L)", "2XL(3L)"],["3XL(4L)", "3XL(4L)"],["4XL(5L)", "4XL(5L)"],["FREE SIZE", "FREE SIZE"]], {prompt: "---"}, {class:"send__main__content__form__box3__content__group1__div__select__show"}
             .send__main__content__form__box3__content__group2#brand_form

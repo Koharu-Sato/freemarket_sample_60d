@@ -1,10 +1,23 @@
 $(document).on('turbolinks:load', function(){
-  var imagecontent = $('#img-content');
-  var imagecontent2 = $('#img-content2');
-  var images = [];
-  var imagefield = $('#img-field');
-  var preview = $('#preview');
-  var preview2 = $('#preview2');
+  let imagecontent = $('#img-content');
+  let imagecontent2 = $('#img-content2');
+  let images = [];
+  let imagefield = $('#img-field');
+  let preview = $('#preview');
+
+  console.log()
+
+  function appendImage(insertHTML) {
+    let img = $(`<div class= "img_view">
+                  <img class="image">
+                  <div class="btn_box">
+                    <div class="btn_box__edit" id="edit" >編集</div>
+                    <div class="btn_box__delete" id="delete" >削除</div>
+                    ${insertHTML}
+                    </div>
+                </div>`);
+  $('preview').append(img);
+  }
 
   $(document).on('change', 'input[type="file"]#img-file', function() {
     let file = $(this).prop('files')[0];
@@ -33,14 +46,11 @@ $(document).on('turbolinks:load', function(){
       })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
-        preview2.append(image);
+        preview.append(image);
         imagecontent2.css({
-          'width': `calc(100% - (130px * ${images.length - 5}))`
+          'width': `calc(100% - (124px * ${images.length - 5}))`
         })
       })
-      if (images.length == 4) {
-
-      }
     } else {
         $('#preview').empty();
         $.each(images, function(index, image) {
@@ -48,7 +58,7 @@ $(document).on('turbolinks:load', function(){
           preview.append(image);
         })
         imagecontent.css({
-          'width': `calc(100% - (130px * ${images.length}))`
+          'width': `calc(100% - (124px * ${images.length}))`
         })
       }
     if(images.length == 10) {
@@ -62,6 +72,7 @@ $(document).on('turbolinks:load', function(){
   });
   $(document).on('click', '#delete', function() {
     let target_image = $(this).parent().parent();
+    
     $.each(images, function(){
       if ($(this).data('image') == target_image.data('image')){
         $(this).remove();
@@ -91,10 +102,10 @@ $(document).on('turbolinks:load', function(){
       })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
-        preview2.append(image);
+        preview.append(image);
       })
       imagecontent2.css({
-        'width': `calc(100% - (130px * ${images.length - 5}))`
+        'width': `calc(100% - (124px * ${images.length - 5}))`
       })
     } else {
       imagecontent.css({
@@ -105,7 +116,7 @@ $(document).on('turbolinks:load', function(){
         preview.append(image);
       })
       imagecontent.css({
-        'width': `calc(100% - (130px * ${images.length}))`
+        'width': `calc(100% - (124px * ${images.length}))`
       })
     }
     if(images.length == 4) {
@@ -114,6 +125,7 @@ $(document).on('turbolinks:load', function(){
       })
     }
   });
+
   $(document).on('click', '#delete', function() {
     let target_image = $(this).parent().parent();
     let img_id = target_image.data('id');
