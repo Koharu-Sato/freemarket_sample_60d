@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.saler_id == current_user.id 
-      delete_imgs = params.require(:delete_ids)
+      delete_ids = delete_imgs
       @item.update(item_params)
       if delete_imgs != nil
         delete_imgs.each do |id|
@@ -93,6 +93,7 @@ class ItemsController < ApplicationController
         end
       end
       redirect_to pre_edit_item_path(@item.id)
+      return
     else
       redirect_to root_path, notice:"この商品は編集できません"
     end

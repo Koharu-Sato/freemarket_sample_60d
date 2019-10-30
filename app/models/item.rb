@@ -28,4 +28,5 @@ class Item < ApplicationRecord
   validates :delivery_fee, presence: {message: '選択してください'}
   validates :delivery_method, presence: {message: '選択してください'}
   validates :delivery_date, presence: {message: '選択してください'}
+  validates :images, length: { minimum: 1, maximum: 10 }, on: [:create, :update, :edit]
 end
