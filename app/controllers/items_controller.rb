@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.saler_id == current_user.id 
-      delete_imgs = params.require(:delete_ids)
+      delete_imgs = params.require(:delete_ids) if params.require(:delete_ids) != nil
       if delete_imgs != nil
         @item.update(item_params)
         delete_imgs.each do |id|
