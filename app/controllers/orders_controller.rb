@@ -10,6 +10,9 @@ class OrdersController < ApplicationController
     if @item.buyer_id.present?
       redirect_to root_path
     end
+    if @item.saler_id == current_user.id
+      redirect_to root_path
+    end
     if @card.present?
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       customer = Payjp::Customer.retrieve(@card.customer_id)
