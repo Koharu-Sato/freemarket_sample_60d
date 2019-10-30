@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :getCategory, :getAllCategory]
-  before_action :set_category, only: [:new, :create, :edit]
-  before_action :set_value, only: [:show, :pre_edit] 
+  before_action :set_category, only: [:new, :create]
+  before_action :set_value, only: [:show, :pre_edit]
   before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :delete_imgs, only: :update
 
   def index
     #category
@@ -48,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def getCategory
-    @categoryList = Category.where(ancestry: nil) 
+    @categoryList = Category.where(ancestry: nil)
   end
   def getAllCategory
     # @categoryAll = Category.all
@@ -85,10 +86,18 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.saler_id == current_user.id && @item.update(item_params)
+    if @item.saler_id == current_user.id 
+      @item.update(item_params)
+      delete_imgs = params.require(:delete_ids)
+      if delete_imgs != nil
+        delete_imgs.each do |id|
+          image = Image.find(id)
+          image.destroy
+        end
+      end
       redirect_to pre_edit_item_path(@item.id)
     else
-      redirect_to root_path
+      redirect_to root_path, notice:"この商品は編集できません"
     end
   end
 
@@ -146,6 +155,14 @@ class ItemsController < ApplicationController
     @address = Address.find_by(user_id: @saler.id)
     @salers_item = Item.where(saler_id: @saler.id)
     @order_count = @salers_item.where.not(buyer_id: nil).count
+  end
+
+  def delete_imgs
+    if params.has_key?(:delete_ids)
+      return params.require(:delete_ids)
+    else
+      return nil
+    end
   end
 
   def set_item
