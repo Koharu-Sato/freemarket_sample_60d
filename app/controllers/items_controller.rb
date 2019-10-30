@@ -68,9 +68,6 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      # params[:images_attributes][:images.length][:image].each do |image|
-      #   @item.images.create(image: image, item_id: @item.id)
-      # end
       redirect_to root_path
     else
       render :new
@@ -87,13 +84,15 @@ class ItemsController < ApplicationController
 
   def update
     if @item.saler_id == current_user.id 
-      @item.update(item_params)
       delete_imgs = params.require(:delete_ids)
       if delete_imgs != nil
+        @item.update(item_params)
         delete_imgs.each do |id|
           image = Image.find(id)
           image.destroy
         end
+      else
+        @item.update(item_params)
       end
       redirect_to pre_edit_item_path(@item.id)
     else
