@@ -114,6 +114,12 @@ $(document).on('turbolinks:load', function(){
       })
     }
   });
+  $(document).on('click', '#delete', function() {
+    let target_image = $(this).parent().parent();
+    let img_id = target_image.data('id');
+    target_image.remove();
+    hidden_form = `<input type="hidden", name="[delete_ids][], value='${img_id}'>`
+  })
 });
 
-
+// gon
