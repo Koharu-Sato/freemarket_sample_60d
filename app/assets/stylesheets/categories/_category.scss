@@ -1,16 +1,5 @@
 //カテゴリ一覧ページ(都道府県も)
-
-//カテゴリ説明mixin
-@mixin category{
-  background-color: white;
-  width: 100%;
-}
-@mixin category-title {
-  background-color: #ea352d;
-  font: bold 22px "MS ゴシック";
-  color: white;
-  border-radius: 10px 10px 0 0;
-}
+@import 'mixins/mixin';
 
 .category-links{
   color: #0095ee;
