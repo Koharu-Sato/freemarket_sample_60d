@@ -23,7 +23,6 @@
           .field.loginwidth
             = f.password_field :password, autocomplete: "new-password", class: "textfield", placeholder: "パスワード"
           .registry-box__content__box__robot.session__robot
-            ここに「私はロボットではねえ」を記述
           = f.submit "ログイン", class: "next"
         %p.forgot
           = link_to(new_password_path(resource_name),class: "forgot-link") do
