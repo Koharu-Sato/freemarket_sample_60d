@@ -11,8 +11,10 @@
   box-shadow: 0 2px 4px rgba(0,0,0,.18);
   float: left;
   &__image {
-    height: 188px;
-    width: 187px;
+    height: 187px;
+    width: 185px;
+    left: 1px;
+    top: 1px;
     background-color: white;
     box-sizing: border-box;
     position: relative;
@@ -212,5 +214,7 @@
 }
 
 .item:hover{
-  border: solid 1px rgb(0,149,238);
+  outline: solid 1px rgb(0,149,238);
+  z-index: 4;
+  outline-offset: -1px;
 }
