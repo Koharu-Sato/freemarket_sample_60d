@@ -53,13 +53,31 @@
         &__keyword {
           margin: 24px 0 0;
         }
-        // &__category {
-        //   height: 180px;
-        //   border-radius: 2px;
-        //   border-radius: 4px;
-        //   font-size: 16px;
-        //   line-height: 1.5;
-        // }
+        &__category {
+          height: 100%;
+          margin: 24px 0 0;
+          &__box {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            &__boxes {
+              -webkit-box-align: center;
+              align-items: center;
+              height: 50px;
+              width: calc(50% - 10px);
+              margin: 10px 5px 0px;
+              input {
+                vertical-align: middle;
+              }
+              label {
+                font-size: 14px;
+                font-weight: normal;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
         &__brand {
           margin: 24px 0 0;
         }
