@@ -12,10 +12,9 @@
             = f.label "キーワードを追加する"
             = f.search_field :name_cont, placeholder:"例）値下げ"
           
-          -# .search__category#category-form
-            -# = f.label :category_items_id_eq, "カテゴリーを選択する"
-            -# = f.collection_select :category_items_id_eq, @category, :id, :category, {prompt: "---"}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"parent-form"
-            -# 非同期で出てくる要素のnameに、qがないから成功しない。中間テーブルを検索してしまっている。別テーブルなので持ってこれてないっぽい。
+          -# .left__box__detail__category#category-form
+          -#   = f.label "カテゴリーを選択する"
+          -#   = f.collection_select :category_items_id_eq, @category, :id, :category, {prompt: "---"}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"parent-form"
           
           .left__box__detail__brand
             = f.label "ブランド名から探す"
@@ -34,14 +33,14 @@
             .left__box__detail__state__box
               - ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"].each do |state|
                 .left__box__detail__state__box__boxes
-                  = f.check_box :state_eq_any, {multiple: true}, checked_value = "#{state}", unchecked_value = ""
+                  = f.check_box :state_eq_any, {}, checked_value = "#{state}", unchecked_value = false
                   = f.label "#{state}"
           .left__box__detail__delivery-fee
             .left__box__detail__delivery-fee__text 配送料の負担
             .left__box__detail__delivery-fee__box
               - ["送料込み（出品者負担）", "着払い（購入者負担）"].each do |fee|
                 .left__box__detail__delivery-fee__box__boxes
-                  = f.check_box :delivery_fee_eq_any, {multiple: true}, checked_value = "#{fee}", unchecked_value = ""
+                  = f.check_box :delivery_fee_eq, {}, checked_value = "#{fee}", unchecked_value = false
                   = f.label "#{fee}"
           .left__box__detail__order-status
             .left__box__detail__order-status__text 販売状況
@@ -80,7 +79,7 @@
                   = "¥#{item.price}"
               .search-container__results__item__name
                 = item.name
--# - binding.pry
+
 = render partial: "layouts/button"
 = render partial: "layouts/aside"
 = render partial: "layouts/footer"

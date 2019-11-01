@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :getCategory, :getAllCategory]
-  before_action :set_category, only: [:new, :create]
-  before_action :set_value, only: [:show, :pre_edit]
+  before_action :set_category, only: [:new, :create, :edit, :search]
+  before_action :set_value, only: [:show, :pre_edit] 
   before_action :set_item, only: [:edit, :update, :destroy]
   before_action :delete_imgs, only: :update
 
@@ -107,6 +107,10 @@ class ItemsController < ApplicationController
     @parents = @parent.siblings
     @grandparent = @parent.parent
     @grandparents = @grandparent.siblings
+
+    if @item.buyer_id.present?
+      redirect_to root_path
+    end
   end
 
   def pre_edit
@@ -129,6 +133,7 @@ class ItemsController < ApplicationController
     if @path[:action] == "index" || params[:q].present?
       @search = Item.ransack(search_params)
       @items = @search.result(distinct: true).references(:category_items, :categories).page(params[:page]).per(5)
+      # binding.pry
     else
       params[:q] = { sorts:"id desc" }
       @search = Item.ransack()
@@ -168,6 +173,6 @@ class ItemsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:sorts, :name_cont, :brand_cont, :size_cont, :price_gteq, :price_lteq, :state_eq_any, :delivery_fee_eq_any, :buyer_id_not_null)
+    params.require(:q).permit(:sorts, :name_cont, :category_items_id_eq, :brand_cont, :size_cont, :price_gteq, :price_lteq, :state_eq_any, :delivery_fee_eq, :buyer_id_not_null)
   end
 end
