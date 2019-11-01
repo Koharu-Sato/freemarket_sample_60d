@@ -94,10 +94,14 @@ $(document).on('turbolinks:load',(function(){
 
   $("#categoryBox").on("mouseleave",function(){
     $("#categoryBox").css("display", "none");
+    $("#categoryBox__childbox").empty();
+    $("#categoryBox__grandchildbox").empty();
   });
 
   $("#categoryAll").on("mouseleave",function(){
     $("#categoryBox").css("display", "none");
+    $("#categoryBox__childbox").empty();
+    $("#categoryBox__grandchildbox").empty();
   });
 
 

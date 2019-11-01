@@ -14,10 +14,10 @@
             最大10枚までアップロードできます
           = f.fields_for :image do |i|
             #img-box
-              - if @item.images.length <= 5
+              - if @item.images.length < 5
                 #preview
                   - @item.images.each_with_index do |image, i|
-                    .img_view(data-image="#{i}")
+                    .img_view(data-image="#{i}" data-id="#{image.id}")
                       - if Rails.env.development?
                         = image_tag "/uploads/image/image/#{image.id}/#{image[:image]}", class: 'image'
                       - if Rails.env.production?
@@ -27,18 +27,39 @@
                           編集
                         .btn_box__delete#delete
                           削除
+                .delete_box
                 = i.label :iamge, for:"img-file" do
-                  #img-content{style: "width: calc(100% - 130 * #{@item.images.length}px)"}
+                  #img-content{style: "width: calc(100% - 124 * #{@item.images.length}px)"}
                     #img-field
-                      = i.file_field :image, class:"upload-image", id:"img-file", 'data-image':"#{@item.images.length}", name:"item[images_attributes][#{@item.images.length}][image]"
+                      = i.file_field :image, class:"upload-image#{@item.images.length}", id:"img-file", 'data-image':"#{@item.images.length}", name:"item[images_attributes][#{@item.images.length}][image]"
                       - @item.images.each_with_index do |image, i|
                         %input{multiple:"multiple", name:"item[images_attributes][#{i}][image]", class:"hidden", type:"file", id:"img-file"}(data-image="#{i}")
+                      %p#guide
+                        クリックしてファイルをアップロード
+              - elsif @item.images.length == 5
+                #preview
+                  - @item.images.each do |image|
+                    .img_view(data-image="#{i}" data-id="#{image.id}")
+                      - if Rails.env.development?
+                        = image_tag "/uploads/image/image/#{image.id}/#{image[:image]}", class: 'image'
+                      - if Rails.env.production?
+                        = image_tag image.image.url, class: 'image'
+                      .btn_box
+                        .btn_box__edit#edit
+                          編集
+                        .btn_box__delete#delete
+                          削除
+                .delete_box
+                #img-content
+                  = i.label :iamge, for:"img-file" do
+                    #img-field
+                      = i.file_field :image, class:"upload-image#{@item.images.length}", id:"img-file", 'data-image':"#{@item.images.length}", name:"item[images_attributes][#{@item.images.length}][image]"                      
                       %p#guide
                         クリックしてファイルをアップロード
               - else
                 #preview
                   - @item.images.each do |image|
-                    .img_view
+                    .img_view(data-image="#{i}" data-id="#{image.id}")
                       - if Rails.env.development?
                         = image_tag "/uploads/image/image/#{image.id}/#{image[:image]}", class: 'image'
                       - if Rails.env.production?
@@ -48,10 +69,11 @@
                           編集
                         .btn_box__delete#delete
                           削除
-                #img-content{style: "width: calc(100% - 130 * #{@item.images.length - 5}px)"}
+                .delete_box
+                #img-content{style: "width: calc(100% - 124 * #{@item.images.length - 5}px)"}
                   = i.label :iamge, for:"img-file" do
                     #img-field
-                      = i.file_field :image, class:"upload-image", id:"img-file", 'data-image':0
+                      = i.file_field :image, class:"upload-image#{@item.images.length}", id:"img-file", 'data-image':"#{@item.images.length}", name:"item[images_attributes][#{@item.images.length}][image]"
                       %p#guide
                         クリックしてファイルをアップロード
         .send__main__content__form__box2
@@ -84,8 +106,8 @@
                     = c.collection_select(:category_id, @children, :id, :category, {prompt: "---"}, class:"send__main__content__form__box3__content__group1__div__select__show", id:"grandchild-form")
             .send__main__content__form__box3__content__group2#size_box
               = f.label :サイズ, id:"title"
-              %span#mark
-                必須
+              %span#mark.gray
+                任意
               .send__main__content__form__box3__content__group2__select
                 = f.select :size, [["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"],["2XL(3L)", "2XL(3L)"],["3XL(4L)", "3XL(4L)"],["4XL(5L)", "4XL(5L)"],["FREE SIZE", "FREE SIZE"]], {prompt: "---"}, {class:"send__main__content__form__box3__content__group1__div__select__show"}
             .send__main__content__form__box3__content__group2#brand_form

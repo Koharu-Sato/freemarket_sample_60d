@@ -36,6 +36,7 @@
           .form-group
             = f.label :都道府県, class:"form-group__label"
             %span.form-group__span 任意
+            %br/
             = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: ""}, {class: "form-group__form"} )
           .form-group
             = f.label :市町村区, class:"form-group__label"

@@ -21,13 +21,12 @@ class Item < ApplicationRecord
     Item.order('created_at desc, id desc').where('created_at >= ? and id > ?', created_at, id).reverse.first
   end
 
-
-
   validates :name, presence: {message: '入力してください'}, length: {maximum: 40, message: "40 文字以下で入力してください"}
-  validates :price, presence: {message:'300以上9999999以下で入力してください'}, numericality: {greater_than: 300, less_than: 9999999, message: '300以上9999999以下で入力してください'}
+  validates :price, presence: {message:'300以上9999999以下で入力してください'}, numericality: {greater_than: 299, less_than: 10000000, message: '300以上9999999以下で入力してください'}
   validates :detail, presence: {message: '入力してください'}, length: {maximum: 1000, message: "1000 文字以下で入力してください"}
   validates :state, presence: {message: '入力してください'}
   validates :delivery_fee, presence: {message: '選択してください'}
   validates :delivery_method, presence: {message: '選択してください'}
   validates :delivery_date, presence: {message: '選択してください'}
+  validates :images, length: { minimum: 1, maximum: 10 }, on: [:create, :update, :edit]
 end
