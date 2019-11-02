@@ -282,7 +282,7 @@
           background-color: rgb(255,255,255);
           float: left;
           margin-top: 6px;
-          margin-left: 68px;
+          margin-left: 8px;
           padding: 10px 16px 8px 16px;
           box-sizing: border-box;
         }
@@ -302,6 +302,7 @@
         &__submit {
           margin-top: 16px;
           height: 50px;
+          width: 100%;
           line-height: 50px;
           text-align: center;
           background-color: rgb(234,53,45);
