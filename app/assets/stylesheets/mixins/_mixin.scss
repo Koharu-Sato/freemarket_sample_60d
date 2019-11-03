@@ -198,3 +198,52 @@
   line-height: 1.5;
   font-size: 16px;
 }
+
+//items#index
+
+//item箱mixin
+@mixin item-box{
+
+  margin-right: 16px;
+  margin-bottom: 16px;
+  height: 251px;
+  width: 187px;
+  background-color: $white;
+  box-shadow: 0 2px 4px rgba(0,0,0,.18);
+  float: left;
+  &__image {
+    height: 188px;
+    width: 187px;
+    background-color: $white;
+    box-sizing: border-box;
+    position: relative;
+    &-url{
+      width: 100%;
+      height: 100%;
+    }
+    &__price {
+      position: absolute;
+      bottom: 10px;
+      height: 28px;
+      width: 80px;  //値段によって変わる
+      line-height: 28px;
+      font-size: 15px;
+      text-align: center;
+      color: $white;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 0 14px 14px 0;
+    }
+  }
+  &__name {
+    height: 64px;
+    width: 188px;
+    padding: 12.4px 14px;
+    font-size: 14px;
+    line-height: 19.6px;
+    box-sizing: border-box;
+    overflow: hidden;
+    &__favorites{
+      text-align: right;
+    }
+  }
+}
