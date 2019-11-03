@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_071751) do
     t.string "city"
     t.string "block"
     t.string "building"
-    t.integer "tel"
+    t.string "tel"
     t.integer "prefecture_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
