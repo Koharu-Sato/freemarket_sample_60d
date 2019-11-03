@@ -73,7 +73,7 @@
               .required
                 必須
           .date-boxes
-            = raw sprintf(f.date_select(:birth_date, prompt: "--", use_month_numbers: true,start_year: (Time.now.year - 1000), end_year: Time.now.year, date_separator: '%s'), "年", "月") + "日"
+            = raw sprintf(f.date_select(:birth_date, prompt: "--", use_month_numbers: true,start_year: (Time.now.year - 100), end_year: Time.now.year, date_separator: '%s'), "年", "月") + "日"
           .attenton-identification
             ※本人確認は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           -# .robot

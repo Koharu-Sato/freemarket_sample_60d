@@ -1,7 +1,4 @@
 
-
-
-
 .body {
   overflow: scroll;
   box-sizing: border-box;
@@ -165,5 +162,7 @@
 }
 
 .item:hover{
-  border: solid 1px $lightblue;
+  outline: solid 1px $lightblue;
+  z-index: 4;
+  outline-offset: -1px;
 }
