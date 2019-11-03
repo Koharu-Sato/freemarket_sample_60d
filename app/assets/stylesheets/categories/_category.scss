@@ -2,7 +2,7 @@
 @import 'mixins/mixin';
 
 .category-links{
-  color: #0095ee;
+  color: $lightblue;
   font-size: 13px;
   margin-right: 10px;
 }
@@ -11,7 +11,7 @@
 }
 
 #back{
-  background-color: rgb(245, 245, 245);
+  background-color: $gray;
 }
 
 .categories{
@@ -22,7 +22,7 @@
     &__header{
       font-size: 20px;
       font-weight: 600;
-      color: rgb(51, 51, 51);
+      color: $black;
       margin-bottom: 20px;
     }
     &__root{
@@ -32,13 +32,13 @@
         display: inline-block;
         min-width: 60px;
         height: 40px;
-        background-color: white;
+        background-color: $white;
         border-radius: 4px;
         font-size: 15px;
         padding: 0 30px;
         margin: 5px;
         line-height: 40px;
-        color: #333;
+        color: $black;
         cursor: pointer;
       }
     }
@@ -56,7 +56,7 @@
         font-size: 15px;
         padding: 24px 30px 10px 30px;
         &__link{
-          color: #0099e8;
+          color: $lightblue;
           line-height: 50px;
         }
         &__child{
@@ -70,7 +70,7 @@
               display: inline-block;
               width: 50%;
               line-height: 40px;
-              color: #0099e8;
+              color: $lightblue;
             }
           }
         }
@@ -80,6 +80,6 @@
 }
 
 .categories__box__root__category:hover{
-  background-color: #ea352d;
-  color: white;
+  background-color: $orange;
+  color: $white;
 }

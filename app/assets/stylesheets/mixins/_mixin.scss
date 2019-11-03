@@ -1,10 +1,10 @@
 //商品出品ページ
 @mixin mark {
-  background: #ea352d;
+  background: $orange;
   padding: 3px 3px;
   margin: 0 0 0 4px;
   border-radius: 2px;
-  color: #fff;
+  color: $white;
   font-size: 12px;
 }
 
@@ -15,7 +15,7 @@
 
 @mixin select {
   margin: 5px 0 0;
-  background: #fff;
+  background: $white;
   position: relative;
   display: inline-block;
   width: 100%;
@@ -25,8 +25,8 @@
   width: 9px;
   height: 9px;
   border: 0px;
-  border-bottom: solid 2px #888;
-  border-right: solid 2px #888;
+  border-bottom: solid 2px $guidefont;
+  border-right: solid 2px $guidefont;
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -45,7 +45,7 @@
   position: relative;
   z-index: 1;
   padding: 0 16px;
-  border: 1px solid #ccc;
+  border: 1px solid $formborder;
   border-radius: 2px;
   border-radius: 4px;
   font-size: 16px;
@@ -78,19 +78,19 @@
       cursor: pointer;
       &__edit {
         width: 50%;
-        background: #f5f5f5;
+        background: $gray;
         line-height: 44px;
         text-align: center;
-        color: #0099e8;
+        color: $lightblue;
         text-decoration: none;
       }
       &__delete {
-        border-left: 1px solid #eee;
+        border-left: 1px solid $bordergray;
         width: 50%;
-        background: #f5f5f5;
+        background: $gray;
         line-height: 44px;
         text-align: center;
-        color: #0099e8;
+        color: $lightblue;
         text-decoration: none;
       }
     }
@@ -102,8 +102,8 @@
   min-height: 162px;
   padding: 40px;
   position: relative;
-  border: 1px dashed rgb(204,204,204);
-  background-color: rgb(245,245,245);
+  border: 1px dashed $formborder;
+  background-color: $gray;
   font-size: 0px;
   text-align: center;
   box-sizing: border-box;
@@ -123,12 +123,78 @@
 }
 //カテゴリ説明mixin
 @mixin category{
-  background-color: white;
+  background-color: $white;
   width: 100%;
 }
 @mixin category-title {
-  background-color: #ea352d;
+  background-color: $orange;
   font: bold 22px "MS ゴシック";
-  color: white;
+  color: $white;
   border-radius: 10px 10px 0 0;
+}
+//header部分
+@mixin box {
+  display: flex;
+  -webkit-box-pack: justify;
+}
+
+@mixin categories {
+  cursor: pointer;
+  height: 44px;
+  position: relative;
+  &__link {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 36px;
+    white-space: nowrap;
+    &__icon{
+    }
+  }
+}
+
+@mixin list_user {
+  cursor: pointer;
+  padding-right: 14px;
+  height: 44px;
+  position: relative;
+  &__link {
+    -webkit-box-align: center;
+    align-items: center;display: flex;
+    font-size: 14px;
+    height: 32px;
+    &__icon {
+    }
+  }
+}
+
+@mixin btn {
+  display: block;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+@mixin category-list {
+  // display: none;
+  display: block;
+  background-color: $white;
+  font-size: 13px;
+  padding-left: 15px;
+  border-left: solid 1px $bordergray;
+}
+//user編集画面
+@mixin form {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 8px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid $formborder;
+  background: $white;
+  line-height: 1.5;
+  font-size: 16px;
 }

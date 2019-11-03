@@ -74,7 +74,7 @@
       &__button {
         text-align: right;
         font-size: 46px;
-        color: white;
+        color: $white;
         font-weight: 400;
       }
     }
@@ -87,7 +87,7 @@
       left: calc(100vw - 91px);
       &__button {
         font-size: 46px;
-        color: white;
+        color: $white;
         font-weight: 400;
       }
     }
@@ -169,7 +169,7 @@
               @include item-box;
               position: relative;
               &__sold-text {
-                color: #fff;
+                color: $white;
                 font-size: 23px;
                 font-weight: 600;
                 left: 0;

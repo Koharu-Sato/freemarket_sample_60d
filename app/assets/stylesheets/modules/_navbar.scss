@@ -3,8 +3,8 @@
 }
 
 .nav {
-  background: white;
-  border-top: 1px solid #eee;
+  background: $white;
+  border-top: 1px solid $bordergray;
   z-index: 1;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
@@ -21,7 +21,7 @@
       &__icon {
         margin: 0 8px;
         font-size: 8px;
-        color: #888;
+        color: $guidefont;
       }
     }
   }

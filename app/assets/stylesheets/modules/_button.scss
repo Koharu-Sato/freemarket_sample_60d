@@ -2,12 +2,12 @@
   height: 160px;
   width: 160px;
   border-radius: 80px;
-  background-color: rgb(234,53,45);
+  background-color: $orange;
   position: fixed;
   right: 32px;
   bottom: 32px;
   text-align: center;
-  color: rgb(255,255,255);
+  color: $white;
   &__text {
     height: 22px;
     font-size: 22px;

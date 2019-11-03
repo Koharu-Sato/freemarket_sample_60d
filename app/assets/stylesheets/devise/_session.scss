@@ -8,7 +8,7 @@
     font-size: 13px;
   }
   &__link{
-    background-color: #0099e8;
+    background-color: $lightblue;
     height: 42px;
     width: 328px;
     margin: 0 auto;
@@ -16,14 +16,14 @@
   }
 }
 .new-link{
-  color: #ffffff;
+  color: $white;
   font-size: 13px;
 }
 
 .forgot{
   text-align: left;
   &-link{
-    color: #0099e8;
+    color: $lightblue;
   }
 }
 
@@ -36,5 +36,5 @@
   font-size: 12px;
   text-align: left;
   line-height: 18px;
-  color: #888888;
+  color: $guidefont;
 }

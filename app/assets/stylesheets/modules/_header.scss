@@ -1,46 +1,3 @@
-@mixin box {
-  display: flex;
-  -webkit-box-pack: justify;
-}
-
-@mixin categories {
-  cursor: pointer;
-  height: 44px;
-  position: relative;
-  &__link {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 36px;
-    white-space: nowrap;
-    &__icon{
-    }
-  }
-}
-
-@mixin list_user {
-  cursor: pointer;
-  padding-right: 14px;
-  height: 44px;
-  position: relative;
-  &__link {
-    -webkit-box-align: center;
-    align-items: center;display: flex;
-    font-size: 14px;
-    height: 32px;
-    &__icon {
-    }
-  }
-}
-
-@mixin btn {
-  display: block;
-  font-size: 14px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  padding: 8px 10px;
-}
 
 a {
   text-decoration: none;
@@ -58,14 +15,14 @@ ul {
 }
 
 .icon-orange {
-  color: rgb(234, 53, 45);
+  color: $orange;
   margin-right: 4px;
   max-width: 100%;
   max-height: 100%;
 }
 
 .icon-gray {
-  color: rgb(204, 204, 204);
+  color: $formborder;
   max-width: 100%;
   max-height: 100%;
   margin-right: 10px;
@@ -75,7 +32,7 @@ ul {
 
 .header {
   width: 100%;
-  background-color: rgb(255,255,255);
+  background-color: $white;
   // box-shadow: 0 0 5px;
   height: 100px;
   &__box {
@@ -102,8 +59,8 @@ ul {
         width: 100%;
         position: relative;
         &__input{
-          background-color: rgb(245, 245, 245);
-          border-color: rgb(204, 204, 204);
+          background-color: $gray;
+          border-color: $formborder;
           border-style: solid;
           border-image: initial;
           width: 100%;
@@ -146,9 +103,9 @@ ul {
         display: flex;
         position: relative;
         a:hover {
-          color: rgb(0,149,238);
+          color: $lightblue;
           i {
-            color: rgb(0,149,238);
+            color: $lightblue;
           }
         }
         &__favorite{
@@ -179,15 +136,15 @@ ul {
           text-align: center;
           margin-left: 11px;
           &__orange{
-            background-color: rgb(234, 53, 45);
-            color: rgb(255,255,255);
-            border-color: rgb(234, 53, 45);
+            background-color: $orange;
+            color: $white;
+            border-color: $orange;
             @include btn;
           }
           &__blue{
-            background-color: rgb(255,255,255);
-            color: rgb(0,149,238);
-            border-color: rgb(0,149,238);
+            background-color: $white;
+            color: $lightblue;
+            border-color: $lightblue;
             @include btn
           }
         }
@@ -196,9 +153,7 @@ ul {
   }
 }
 
-
 //headerのカテゴリリスト
-
 #categoryAll{
 
   #categoryBox{
@@ -208,25 +163,14 @@ ul {
     &__box{
     }
     &__childbox{
-      background-color: white;
+      background-color: $white;
       height: 616px;
     }
     &__grandchildbox{
-      background-color: white;
+      background-color: $white;
       height: 616px;
     }
   }
-}
-
-
-
-@mixin category-list {
-  // display: none;
-  display: block;
-  background-color: white;
-  font-size: 13px;
-  padding-left: 15px;
-  border-left: solid 1px #eee;
 }
 
 .categoryList{
@@ -235,8 +179,8 @@ ul {
   width: 200px;
 }
 .categoryList:hover{
-  background-color: #ea352d;
-  color: white;
+  background-color: $orange;
+  color: $white;
 }
 
 .childcategoryList{
@@ -245,15 +189,15 @@ ul {
   width: 200px;
 }
 .childcategoryList:hover{
-  background-color: #eee;
+  background-color: $bordergray;
 }
 
 .grandchildcategoryList{
   @include category-list;
   line-height: 30px;
   width: 200px;
-  border-right: solid 1px #eee;
+  border-right: solid 1px $bordergray;
 }
 .grandchildcategoryList:hover{
-  background-color: #eee;
+  background-color: $bordergray;
 }

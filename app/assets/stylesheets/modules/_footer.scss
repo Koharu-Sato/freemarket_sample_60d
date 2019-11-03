@@ -20,7 +20,7 @@ ul {
 }
 
 .list-color {
-  color: rgb(255, 255, 255);
+  color: $white;
   opacity: 0.7;
 }
 
@@ -28,15 +28,15 @@ ul {
   display: inline-block;
   margin-top: 30px;
   font-size: 2rem;
-  color: rgb(255, 255, 255);
+  color: $white;
   &__twitter {
     margin-right: 20px;
   }
 }
 
 .footer {
-  background-color: rgb(34, 34, 34);
-  color: rgb(255, 255, 255);
+  background-color: $footerblack;
+  color: $white;
   font-size: 12px;
   padding: 0 20px 10px;
   &__box {

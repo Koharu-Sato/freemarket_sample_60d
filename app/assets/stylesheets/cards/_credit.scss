@@ -1,6 +1,6 @@
 
 .credit-japan {
-  background: #f5f5f5;
+  background: $gray;
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
 }
 .credit-wrapper {
@@ -33,16 +33,16 @@
     &__add {
       height: 58px;
       padding: 24px 0;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid $bordergray;
       &__box {
         max-width: 320px;
         margin: 0 auto;
         &__buttun {
           font-size: 14px;
           margin-bottom: 8px !important;
-          background: #ea352d;
-          border: 1px solid #ea352d;
-          color: #fff;
+          background: $orange;
+          border: 1px solid $orange;
+          color: $white;
           display: block;
           width: 100%;
           line-height: 48px;
@@ -60,7 +60,7 @@
 }
 ///二つ目///
 .credit2 {
-  background: white;
+  background: $white;
   height: 562px;
   width: 700px;
   float: right;
@@ -68,7 +68,7 @@
   &__header {
     font-size: 24px;
     padding: 8px 24px;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid $gray;
     text-align: center;
     line-height: 1.4;
   }
@@ -95,8 +95,8 @@
           height: 48px;
           padding: 10px 16px 8px;
           border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
+          border: 1px solid $formborder;
+          background: $white;
           line-height: 1.5;
           font-size: 16px;
           box-sizing: border-box;
@@ -124,7 +124,7 @@
             width: calc(50% - 2px);
             margin: 8px 0 0;
             position: relative;
-            background: #fff;
+            background: $white;
             &__select {
               width: calc(100% - 38px);
               position: relative;
@@ -132,7 +132,7 @@
               height: 48px;
               padding: 0 16px;
               border-radius: 4px;
-              border: 1px solid #ccc;
+              border: 1px solid $formborder;
               background: 0;
               font-size: 14px;
               line-height: 1.5;
@@ -148,7 +148,7 @@
               pointer-events: none;
               right: 16px;
               z-index: 2;
-              color: #888;
+              color: $guidefont;
               transform: translate(0, -25%)
             }
           }
@@ -157,7 +157,7 @@
             width: calc(50% - 2px);
             margin: 8px 0 0;
             position: relative;
-            background: #fff;
+            background: $white;
             &__select {
               width: calc(100% - 38px);
               position: relative;
@@ -165,7 +165,7 @@
               height: 48px;
               padding: 0 16px;
               border-radius: 4px;
-              border: 1px solid #ccc;
+              border: 1px solid $formborder;
               background: 0;
               font-size: 14px;
               line-height: 1.5;
@@ -181,7 +181,7 @@
               pointer-events: none;
               right: 16px;
               z-index: 2;
-              color: #888;
+              color: $guidefont;
               transform: translate(0, -25%)
             }
           }
@@ -203,8 +203,8 @@
           height: 48px;
           padding: 10px 16px 8px;
           border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
+          border: 1px solid $formborder;
+          background: $white;
           line-height: 1.5;
           font-size: 16px;
           box-sizing: border-box;
@@ -215,14 +215,14 @@
           font-size: 14px;
           &__sub {
             text-align: right;
-            color: #0099e8;
+            color: $lightblue;
             #question {
               display: inline-block;
               width: 14px;
               height: 14px;
               border-radius: 50%;
-              background: #0099e8;
-              color: #fff;
+              background: $lightblue;
+              color: $white;
               line-height: 14px;
               font-size: 10px;
               text-align: center;
@@ -238,9 +238,9 @@
         &__button {
           height: 48px;
           margin-top: 32px;
-          background: #ea352d;
-          border: 1px solid #ea352d;
-          color: #fff;
+          background: $orange;
+          border: 1px solid $orange;
+          color: $white;
           display: block;
           width: 343px;
           line-height: 48px;
@@ -256,7 +256,7 @@
 
 ///三つめ
 .credit {
-  background: white;
+  background: $white;
   height: 368.094px;
   width: 700px;
   float: right;
@@ -264,7 +264,7 @@
   &__header {
     font-size: 24px;
     padding: 8px 24px;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid $gray;
     text-align: center;
     line-height: 1.4;
   }
@@ -272,7 +272,7 @@
     height: 189.9px;
     width: 572px;
     padding: 64px;
-    border-top: 1px solid #f5f5f5;
+    border-top: 1px solid $gray;
     &__up {
       height: 133px;
       width: 572px;
@@ -288,7 +288,7 @@
         &__box {
           height: 68px;
           padding: 24px 0;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid $bordergray;
           &__post {
             height: 68px;
             position: relative;
@@ -310,10 +310,10 @@
                 top: 0;
                 right: 0;
                 padding: 4px 6px;
-                background: #fff;
+                background: $white;
                 border-radius: 3px;
-                border: 1px solid #ea352d;
-                color: #ea352d;
+                border: 1px solid $orange;
+                color: $orange;
               }
             }
           }
@@ -324,7 +324,7 @@
       display: block;
       margin: 40px 0 0;
       text-align: right;
-      color: #0099e8;
+      color: $lightblue;
       text-decoration: none;
       touch-action: manipulation;
       #credit-span {
@@ -335,7 +335,7 @@
         -webkit-font-smoothing: antialiased;
         font-style: normal;
         vertical-align: middle;
-        -webkit-text-stroke: 1px white
+        -webkit-text-stroke: 1px $white
       }
     }
   }

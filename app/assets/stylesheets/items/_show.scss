@@ -210,7 +210,7 @@
         line-height: 30px;
         width: 120px;
         i {
-          color: #ccc;
+          color: $formborder;
         }
       }
       &__center {
@@ -260,7 +260,7 @@
       display: block;
       height: 50px;
       width: 668px;
-      background-color: #aaa;
+      background-color: $iconcolor;
       font-size: 14px;
       margin-top: 16px;
       color: $white;
@@ -308,7 +308,7 @@
             }
           }
           &__seller {
-            background-color: #eef0f4;
+            background-color: $backgray;
             border-radius: 2px;
             display: block;
             font-size: 12px;
@@ -321,7 +321,7 @@
         &__detail{
           margin-top: 25px;
           &__message-body {
-            background-color: #eef0f4;
+            background-color: $backgray;
             border-radius: 15px;
             padding: 16px;
             width: 570px;
@@ -356,7 +356,7 @@
   .message-submit {
     height: 262px;
     width: 700px;
-    background-color: white;
+    background-color: $white;
     margin: 0 auto;
     padding: 24px;
     box-sizing: border-box;
@@ -364,7 +364,7 @@
       height: 44px;
       width: 652px;
       background-color: rgb(255,246,222);
-      color: rgb(51,51,51);
+      color: $black;
       font-size: 14px;
       padding: 8px;
       box-sizing: border-box;
@@ -375,7 +375,7 @@
       height: 104px;
       width: 652px;
       padding: 10px;
-      border-color: rgb(204,204,204);
+      border-color: $formborder;
       box-sizing: border-box;
       line-height: 24px;
       outline: 0;
@@ -383,10 +383,10 @@
     &__button {
       height: 50px;
       width: 652px;
-      background-color: #aaa;
+      background-color: $iconcolor;
       font-size: 14px;
       margin-top: 8px;
-      color: white;
+      color: $white;
       text-align: center;
       line-height: 50px;
       box-sizing: border-box;
@@ -398,7 +398,7 @@
     margin: 24px auto;
     width: 700px;
     a {
-      color: #0099e8;
+      color: $lightblue;
     }
     &__prev {
       display: flex;
@@ -417,7 +417,7 @@
     }
   }
   .sns {
-    background-color: #fff;
+    background-color: $white;
     height: 100px;
     margin: 0 auto;
     padding-top: 50px;
@@ -430,7 +430,7 @@
       margin: 0 auto;
       width: 200px;
       i {
-        color: #fff;
+        color: $white;
       }
       &__facebook {
         background: #385185;
@@ -509,7 +509,7 @@
             z-index: 1;
           }
           &__text {
-            color: #fff;
+            color: $white;
             font-size: 23px;
             font-weight: 600;
             left: 0;
@@ -519,8 +519,8 @@
             z-index: 3;
           }
           &__soldout {
-            border-top: 50px solid #ea352d;
-            border-left: 50px solid #ea352d;
+            border-top: 50px solid $orange;
+            border-left: 50px solid $orange;
             border-right: 50px solid transparent;
             border-bottom: 50px solid transparent;
             position: absolute;
@@ -530,7 +530,7 @@
           }
         }
         &__body {
-          background-color: #fff;
+          background-color: $white;
           padding: 16px;
           &__num {
             display: flex;
@@ -538,7 +538,7 @@
             &__icon {
               margin-left: auto;
               .num-icon {
-                color: #aaa;
+                color: $iconcolor;
               }
             }
           }
@@ -551,7 +551,7 @@
     padding-top: 20px;
     width: 720px;
     &__head {
-      color: #0099e8;
+      color: $lightblue;
       font-size: 22px;
       font-weight: bold;
       text-decoration: none;
@@ -578,7 +578,7 @@
             z-index: 1;
           }
           &__text {
-            color: #fff;
+            color: $white;
             font-size: 23px;
             font-weight: 600;
             left: 0;
@@ -588,8 +588,8 @@
             z-index: 3;
           }
           &__soldout {
-            border-top: 50px solid #ea352d;
-            border-left: 50px solid #ea352d;
+            border-top: 50px solid $orange;
+            border-left: 50px solid $orange;
             border-right: 50px solid transparent;
             border-bottom: 50px solid transparent;
             position: absolute;
@@ -599,7 +599,7 @@
           }
         }
         &__body {
-          background-color: #fff;
+          background-color: $white;
           padding: 16px;
           &__num {
             display: flex;
@@ -607,7 +607,7 @@
             &__icon {
               margin-left: auto;
               .num-icon {
-                color: #aaa;
+                color: $iconcolor;
               }
             }
           }
@@ -618,7 +618,7 @@
 }
 .bread-box {
   border-top: 1px solid #eee;
-  background-color: rgb(245, 245, 245);
+  background-color: $gray;
   .breadcrumbs {
   margin: 0 auto;
   width: 1020px;
