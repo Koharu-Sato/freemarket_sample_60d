@@ -1,55 +1,3 @@
-//items#index
-
-//item箱mixin
-@mixin item-box{
-
-  margin-right: 16px;
-  margin-bottom: 16px;
-  height: 251px;
-  width: 187px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,.18);
-  float: left;
-  &__image {
-    height: 187px;
-    width: 185px;
-    left: 1px;
-    top: 1px;
-    background-color: white;
-    box-sizing: border-box;
-    position: relative;
-    &-url{
-      width: 100%;
-      height: 100%;
-    }
-    &__price {
-      position: absolute;
-      bottom: 10px;
-      height: 28px;
-      width: 80px;  //値段によって変わる
-      line-height: 28px;
-      font-size: 15px;
-      text-align: center;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.4);
-      border-radius: 0 14px 14px 0;
-    }
-  }
-  &__name {
-    height: 64px;
-    width: 188px;
-    padding: 12.4px 14px;
-    font-size: 14px;
-    line-height: 19.6px;
-    box-sizing: border-box;
-    overflow: hidden;
-    &__favorites{
-      text-align: right;
-    }
-  }
-}
-
-
 
 .body {
   overflow: scroll;
@@ -76,7 +24,7 @@
       &__button {
         text-align: right;
         font-size: 46px;
-        color: white;
+        color: $white;
         font-weight: 400;
       }
     }
@@ -89,7 +37,7 @@
       left: calc(100vw - 91px);
       &__button {
         font-size: 46px;
-        color: white;
+        color: $white;
         font-weight: 400;
       }
     }
@@ -105,7 +53,7 @@
           text-align: center;
           font-size: 28px;
           font-weight: 600;
-          color: rgb(51, 51, 51);
+          color: $black;
         }
         &__contents {
           padding-top: 16px;
@@ -114,7 +62,7 @@
           box-sizing: border-box;
           width: 100%;
           font-weight: 600;
-          color: rgb(51, 51, 51);
+          color: $black;
           &__box{
             display: flex;
             justify-content: center;
@@ -126,7 +74,7 @@
               padding: 2px 10px;
               width: auto;
               margin-right: 10px;
-              background-color: rgb(245, 245, 245);
+              background-color: $white;
               font-size: 14px;
               line-height: 30px;
               border-radius: 15px;
@@ -136,7 +84,7 @@
         }
       }
       &__new-items {
-        background-color: rgb(245, 245, 245);
+        background-color: $white;
         height: 715px;
         width: 100%;
         padding-top: 42px;
@@ -154,7 +102,7 @@
           }
           &__more {
             margin-left: auto;
-            color: rgb(0,149,238);
+            color: $lightblue;
             line-height: 33px;
             font-size: 14px;
             font-weight: 600;
@@ -171,7 +119,7 @@
               @include item-box;
               position: relative;
               &__sold-text {
-                color: #fff;
+                color: $white;
                 font-size: 23px;
                 font-weight: 600;
                 left: 0;
@@ -181,8 +129,8 @@
                 z-index: 3;
               }
               &__soldout {
-                border-top: 50px solid #ea352d;
-                border-left: 50px solid #ea352d;
+                border-top: 50px solid $orange;
+                border-left: 50px solid $orange;
                 border-right: 50px solid transparent;
                 border-bottom: 50px solid transparent;
                 position: absolute;
@@ -214,7 +162,7 @@
 }
 
 .item:hover{
-  outline: solid 1px rgb(0,149,238);
+  outline: solid 1px $lightblue;
   z-index: 4;
   outline-offset: -1px;
 }

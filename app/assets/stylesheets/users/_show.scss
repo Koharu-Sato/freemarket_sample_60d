@@ -1,5 +1,5 @@
 .show-japan {
-  background: #f5f5f5;
+  background: $gray;
 }
 // #mypage {
 //   background: #eee;
@@ -17,8 +17,8 @@
 }
 .show {
   // padding: 40px;
-  background-color: rgb(245,245,245);
-  color: rgb(51, 51, 51);
+  background-color: $gray;
+  color: $black;
   overflow: hidden;
   margin: 40px auto 0;
   width: 1020px;
@@ -39,10 +39,10 @@
         box-sizing: border-box;
         font-size: 14px;
         font-weight: 400;
-        background-color: rgb(255,255,255);
+        background-color: $white;
         border-bottom-style: solid;
         border-bottom-width: thin;
-        border-bottom-color: rgb(245, 245, 245);
+        border-bottom-color: $gray;
         &__fa {
           float: right;
           color: rgb(141,141,141);
@@ -59,10 +59,10 @@
         box-sizing: border-box;
         font-size: 14px;
         font-weight: 400;
-        background-color: rgb(255,255,255);
+        background-color: $white;
         border-bottom-style: solid;
         border-bottom-width: thin;
-        border-bottom-color: rgb(245, 245, 245);
+        border-bottom-color: $gray;
         &__fa {
           float: right;
           color: rgb(141,141,141);
@@ -76,7 +76,7 @@
     float: right;
     &__profile {
       height: 767px;
-      background-color: rgb(255,255,255);
+      background-color: $white;
       box-sizing: border-box;
       &__user {
         height: 200px;
@@ -87,7 +87,7 @@
           height: 60px;
           width: 60px;
           border-radius: 30px;
-          background-color: white;
+          background-color: $white;
           margin-left: 320px;
           margin-right: 320px;
         }
@@ -117,8 +117,8 @@
             text-align: center;
             font-size: 16px;
             font-weight: 700;
-            background-color: rgb(255,255,255);
-            border-top-color: rgb(234,53,45);
+            background-color: $white;
+            border-top-color: $orange;
             border-top-style: solid;
             border-top-style: 2px;
           }
@@ -136,10 +136,10 @@
         &__li {
           height: 80px;
           box-sizing: border-box;
-          background-color: rgb(255,255,255);
+          background-color: $white;
           border-bottom-style: solid;
           border-bottom-width: thin;
-          border-bottom-color: rgb(245, 245, 245);
+          border-bottom-color: $gray;
           padding: 16px;
           &__icon {
             height: 48px;
@@ -162,7 +162,7 @@
           }
           &__chevron {
             float: right;
-            color: rgb(51,51,51);
+            color: $black;
             height: 48px;
             line-height: 48px;
           }
@@ -172,7 +172,7 @@
           box-sizing: border-box;
           padding: 16px;
           &__text {
-            background-color: rgb(238,238,238);
+            background-color: $bordergray;
             height: 56px;
             line-height: 56px;
             text-align: center;
@@ -203,8 +203,8 @@
           text-align: center;
           font-size: 16px;
           font-weight: 700;
-          background-color: rgb(255,255,255);
-          border-top-color: rgb(234,53,45);
+          background-color: $white;
+          border-top-color: $orange;
           border-top-style: solid;
           border-top-style: 2px;
         }
@@ -228,7 +228,7 @@
         background-position: center 40px;
         background-size: 78px 85px;
         padding: 50px 0 60px;
-        color: rgb(204,204,204);
+        color: $formborder;
         text-align: center;
         font-size: 16px;
         font-weight: 600;
@@ -238,14 +238,14 @@
     &__logout {
       height: 179px;
       width: 700px;
-      background-color: rgb(255,255,255);
+      background-color: $white;
       padding: 64px 190px;
       box-sizing: border-box;
       &__button {
         height: 50px;
         width: 320px;
-        background-color: rgb(234,53,45);
-        color: rgb(255,255,255);
+        background-color: $orange;
+        color: $white;
         font-size: 14px;
         text-align: center;
         line-height: 50px;
@@ -253,7 +253,7 @@
     }
     &__edit {
       height: 568px;
-      background-color: rgb(255,255,255);
+      background-color: $white;
       box-sizing: border-box;
       &__title {
         height: 50px;
@@ -272,14 +272,14 @@
           height: 60px;
           width: 60px;
           border-radius: 30px;
-          background-color: rgb(255,255,255);
+          background-color: $white;
           float: left;
           margin-left: 192px;
         }
         &__name {
           height: 48px;
           width: 220px;
-          background-color: rgb(255,255,255);
+          background-color: $white;
           float: left;
           margin-top: 6px;
           margin-left: 8px;
@@ -293,7 +293,7 @@
         &__textarea {
           border-style: solid;
           border-width: 1px;
-          border-color: rgb(204,204,204);
+          border-color: $formborder;
           min-height: 216px;
           width: 668px;
           padding: 10px;
@@ -304,8 +304,8 @@
           height: 50px;
           line-height: 50px;
           text-align: center;
-          background-color: rgb(234,53,45);
-          color: rgb(255,255,255);
+          background-color: $orange;
+          color: $white;
         }
       }
     }

@@ -8,7 +8,7 @@
 }
 @mixin box-mailFacebook {
   height: 50px;
-  color: #ffffff;
+  color: $white;
 }
 @mixin icon-style {
   display: block;
@@ -19,7 +19,7 @@
 .all{
   height: 100vh;
   width: 100vw;
-  background-color: rgb(245, 245, 245);
+  background-color: $gray;
 }
 
 #address_prefecture_id{
@@ -33,12 +33,12 @@
     text-align: center;
     padding: 32px;
     font-size: 22px;
-    background-color: #ffffff;
+    background-color: $white;
     margin-bottom: 1px;
   }
   &__content{
     padding: 40px 40px 64px;
-    background-color: #ffffff;
+    background-color: $white;
     &__box{
       max-width: 343px;
       margin: 0 auto;
@@ -48,7 +48,7 @@
       &__mail{
         @include box-style;
         @include box-mailFacebook;
-        background-color: #ea352d;
+        background-color: $orange;
       }
       &__facebook{
         @include box-style;
@@ -161,77 +161,65 @@
 
   .registration-bar{
     #through{
-      color: #ea352d;
+      color: $orange;
       .progress-status{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
   }
   .sms-bar{
     #through{
       .progress-status_bar{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
     #active{
-      color: #ea352d;
+      color: $orange;
       .progress-status{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
   }
   .address-bar{
     #active{
       .progress-status_bar{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
     #address{
-      color: #ea352d;
+      color: $orange;
       .progress-status{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
   }
   .card-bar{
     #address{
       .progress-status_bar{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
     #payment{
       color: #ea352d;
       .progress-status{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
   }
   .end-bar{
     #payment{
       .progress-status_bar{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
     #end{
-      color: #ea352d;
+      color: $orange;
       .progress-status{
-        background-color: #ea352d;
+        background-color: $orange;
       }
     }
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .field{
   padding-bottom: 30px;
@@ -246,9 +234,9 @@
     }
     .required{
       margin-left: 8px;
-      background-color: #ea352d;
+      background-color: $orange;
       border-radius: 2px;
-      color: #ffffff;
+      color: $white;
       font-size: 12px;
       width: 30px;
       height: 20px;
@@ -260,7 +248,7 @@
       margin-left: 8px;
       background-color: rgb(235, 235, 235);
       border-radius: 2px;
-      color: #ffffff;
+      color: $white;
       font-size: 12px;
       width: 30px;
       height: 20px;
@@ -306,7 +294,7 @@
 
 
 .attenton-identification{
-  color: #888;
+  color: $guidefont;
   line-height: 15px;
   text-align: left;
   padding-top: 10px;
@@ -319,18 +307,18 @@
   display: block;
   width: 100%;
   height: 50px;
-  color: #ffffff;
-  background-color: #ea352d;
+  color: $white;
+  background-color: $orange;
   text-align: center;
   line-height: 50px;
   margin-top: 32px;
 }
 .confirmation-identification{
   text-align: right;
-  color: #0099e8;
+  color: $lightblue;
 }
 .link-term{
-  color: #0099e8;
+  color: $lightblue;
 }
 
 .link{
@@ -339,7 +327,7 @@
 
 @mixin date-select {
   height: 50px;
-  background-color: #ffffff;
+  background-color: $white;
   padding-left: 10px;
   -webkit-appearance: none;
   background-image: image-url("arrow.png");
@@ -392,7 +380,7 @@
 #address_prefecture_id{
   width: 100%;
   height: 48px;
-  background-color: #ffffff;
+  background-color: $white;
   -webkit-appearance: none;
   background-image: image-url("arrow.png");
   background-repeat: no-repeat;

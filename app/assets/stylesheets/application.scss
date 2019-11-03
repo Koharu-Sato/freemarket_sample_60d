@@ -13,27 +13,28 @@
  *= require font-awesome
  */
 
-@import 'reset';
-@import 'color';
-@import 'mixin';
+@import 'config/reset';
+@import 'config/color';
 @import 'font-awesome';
-@import 'header';
-@import 'footer';
+@import 'mixins/mixin';
+@import 'modules/header';
+@import 'modules/footer';
+@import 'modules/aside';
+@import 'modules/navbar';
+@import 'modules/simple';
+@import 'modules/button';
+@import 'modules/error_messages';
+@import 'devise/registration';
+@import 'devise/session';
+@import 'items/index';
+@import 'items/new';
 @import 'items/show';
-@import 'aside';
-@import 'category';
-@import 'index';
-@import 'navbar';
-@import 'users/edit';
-@import 'show';
-@import 'simple';
-@import 'registration';
-@import 'session';
-@import 'new';
-@import 'order/new';
-@import 'credit';
-@import 'button';
-@import 'users/myitem';
-@import 'error_messages';
 @import 'items/search';
-@import 'category'
+@import 'categories/category';
+@import 'users/show';
+@import 'users/edit';
+@import 'users/myitem';
+@import 'order/new';
+@import 'cards/credit';
+
+

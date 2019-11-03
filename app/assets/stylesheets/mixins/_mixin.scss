@@ -1,0 +1,249 @@
+//商品出品ページ
+@mixin mark {
+  background: $orange;
+  padding: 3px 3px;
+  margin: 0 0 0 4px;
+  border-radius: 2px;
+  color: $white;
+  font-size: 12px;
+}
+
+@mixin font-weight {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@mixin select {
+  margin: 5px 0 0;
+  background: $white;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+@mixin select_after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border: 0px;
+  border-bottom: solid 2px $guidefont;
+  border-right: solid 2px $guidefont;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  margin-top: -7px;
+}
+@mixin select_show {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 48px;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+  border: 1px solid $formborder;
+  border-radius: 2px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+@mixin preview {
+  width: auto;
+  height: fit-content;
+  box-sizing: border-box;
+  .img_view {
+    float: left;
+    -webkit-box-flex: 1;
+    flex: 1;
+    height: 172px;
+    width: 116px;
+    margin: 0 4px;
+    .image {
+      line-height: 116px;
+      width: 116px;
+      padding: 0;
+      height: 117px;
+      position: relative;
+      margin: 0;
+    }
+    .btn_box {
+      font-size: 14px;
+      display: flex;
+      cursor: pointer;
+      &__edit {
+        width: 50%;
+        background: $gray;
+        line-height: 44px;
+        text-align: center;
+        color: $lightblue;
+        text-decoration: none;
+      }
+      &__delete {
+        border-left: 1px solid $bordergray;
+        width: 50%;
+        background: $gray;
+        line-height: 44px;
+        text-align: center;
+        color: $lightblue;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@mixin img-content{
+  width: 100%;
+  min-height: 162px;
+  padding: 40px;
+  position: relative;
+  border: 1px dashed $formborder;
+  background-color: $gray;
+  font-size: 0px;
+  text-align: center;
+  box-sizing: border-box;
+  float: right;
+  cursor: pointer;
+}
+
+@mixin guide {
+  position: absolute;
+  top: 35%;
+  left: 16px;
+  right: 16px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5rem;
+  word-break: break-all;
+}
+//カテゴリ説明mixin
+@mixin category{
+  background-color: $white;
+  width: 100%;
+}
+@mixin category-title {
+  background-color: $orange;
+  font: bold 22px "MS ゴシック";
+  color: $white;
+  border-radius: 10px 10px 0 0;
+}
+//header部分
+@mixin box {
+  display: flex;
+  -webkit-box-pack: justify;
+}
+
+@mixin categories {
+  cursor: pointer;
+  height: 44px;
+  position: relative;
+  &__link {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 36px;
+    white-space: nowrap;
+    &__icon{
+    }
+  }
+}
+
+@mixin list_user {
+  cursor: pointer;
+  padding-right: 14px;
+  height: 44px;
+  position: relative;
+  &__link {
+    -webkit-box-align: center;
+    align-items: center;display: flex;
+    font-size: 14px;
+    height: 32px;
+    &__icon {
+    }
+  }
+}
+
+@mixin btn {
+  display: block;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+@mixin category-list {
+  // display: none;
+  display: block;
+  background-color: $white;
+  font-size: 13px;
+  padding-left: 15px;
+  border-left: solid 1px $bordergray;
+}
+//user編集画面
+@mixin form {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 8px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid $formborder;
+  background: $white;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+//items#index
+
+//item箱mixin
+@mixin item-box{
+
+  margin-right: 16px;
+  margin-bottom: 16px;
+  height: 251px;
+  width: 187px;
+  background-color: $white;
+  box-shadow: 0 2px 4px rgba(0,0,0,.18);
+  float: left;
+  &__image {
+    height: 188px;
+    width: 187px;
+    background-color: $white;
+    box-sizing: border-box;
+    position: relative;
+    &-url{
+      width: 100%;
+      height: 100%;
+    }
+    &__price {
+      position: absolute;
+      bottom: 10px;
+      height: 28px;
+      width: 80px;  //値段によって変わる
+      line-height: 28px;
+      font-size: 15px;
+      text-align: center;
+      color: $white;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 0 14px 14px 0;
+    }
+  }
+  &__name {
+    height: 64px;
+    width: 188px;
+    padding: 12.4px 14px;
+    font-size: 14px;
+    line-height: 19.6px;
+    box-sizing: border-box;
+    overflow: hidden;
+    &__favorites{
+      text-align: right;
+    }
+  }
+}
