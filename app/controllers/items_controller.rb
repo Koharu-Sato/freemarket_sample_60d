@@ -132,7 +132,7 @@ class ItemsController < ApplicationController
     @path = Rails.application.routes.recognize_path(before_uri.path)
     if @path[:action] == "index" || params[:q].present?
       @search = Item.ransack(search_params)
-      @items = @search.result(distinct: true).references(:category_items, :categories).page(params[:page]).per(5)
+      @items = @search.result(distinct: true).references(:category_items, :categories).page(params[:page]).per(20)
       # binding.pry
     else
       params[:q] = { sorts:"id desc" }
